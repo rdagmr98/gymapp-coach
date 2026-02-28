@@ -40069,7 +40069,7 @@ s=2
 return A.U(A.tg(),$async$qY)
 case 2:o=b
 n=o.a
-m=A.hE(n.h(0,"is_authorized"))
+m=A.hE(n.h(0,"is_authorized_pt"))
 l=A.ch(n.h(0,"saved_device_id"))
 p.a=l
 s=l==null?3:4
