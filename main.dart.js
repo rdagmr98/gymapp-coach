@@ -41058,7 +41058,7 @@ case 3:return A.L(null,r)}})
 return A.M($async$tb,r)},
 L(a){var s=this,r=null
 if(s.d)return B.Mh
-return A.asx(r,A.hZ(new A.bI(B.na,A.hk(A.c([B.Gg,B.PL,B.VT,B.i7,A.c8("DEVICE ID: "+s.e,r,r,r,r,B.UP,r,r),B.l6,A.jv(!1,s.f,B.Gv,r,B.fh,1,r,r,B.Te,B.dS),B.PM,A.eI(A.rq(B.Vy,s.gahh(),A.IO(r,r,B.bp,r,r,r,r,r,r,B.l,r,r,r,r,r,r,r,r,r,r)),50,1/0)],t.p),B.a0,B.kt,B.be),r),r,r),r)}}
+return A.asx(r,A.hZ(new A.bI(B.na,A.hk(A.c([B.Gg,B.PL,B.VR,B.i7,A.c8("DEVICE ID: "+s.e,r,r,r,r,B.UP,r,r),B.l6,A.jv(!1,s.f,B.Gv,r,B.fh,1,r,r,B.Te,B.dS),B.PM,A.eI(A.rq(B.Vy,s.gahh(),A.IO(r,r,B.bp,r,r,r,r,r,r,B.l,r,r,r,r,r,r,r,r,r,r)),50,1/0)],t.p),B.a0,B.kt,B.be),r),r,r),r)}}
 A.afa.prototype={
 $0(){var s,r=this.b
 r.d=this.c
@@ -41148,7 +41148,7 @@ ta(a){var s,r,q,p,o,n,m="Nessuna sessione trovata nel file."
 a=a
 a=J.auI(a)
 if(J.bG(a)===0)throw A.i("Il testo \xe8 vuoto.")
-if(J.H_(a,"TIPO:SCHEDA_GYM"))throw A.i("Questo \xe8 un file scheda (.gym) per l'atleta, non un file progressi.\n\nL'atleta deve usare 'Invia progressi' nell'app Gym Logbook e inviarti il file .gymlog.")
+if(J.H_(a,"TIPO:SCHEDA_GYM"))throw A.i("Questo \xe8 un file scheda (.workout) per l'atleta, non un file progressi.\n\nL'atleta deve usare 'Invia progressi' nell'app Gym Logbook e inviarti il file .gymlog.")
 if(J.H_(a,"TIPO:PROGRESSI_GYM"))a=B.d.eJ(J.ar7(a,J.ar6(a,"\n")+1))
 if(J.bG(a)===0)throw A.i("Il file \xe8 vuoto dopo l'intestazione.")
 s=null
@@ -41160,7 +41160,7 @@ o=null}else if(t.f.b(s))if(s.av("logs")){n=s.h(0,"logs")
 if(!q.b(n)||J.hc(n))throw A.i(m)
 o=A.cb(s.h(0,"clientName"))
 q=J.fF(n,new A.al1(),t.a)
-p=A.X(q,q.$ti.i("aj.E"))}else if(s.av("routine"))throw A.i("Questo sembra una scheda allenamento (.gym), non un file progressi.\n\nL'atleta deve inviarti un file .gymlog tramite 'Invia progressi'.")
+p=A.X(q,q.$ti.i("aj.E"))}else if(s.av("routine"))throw A.i("Questo sembra una scheda allenamento (.workout), non un file progressi.\n\nL'atleta deve inviarti un file .gymlog tramite 'Invia progressi'.")
 else throw A.i("Struttura JSON non riconosciuta.\nManca la chiave 'logs' o l'elenco sessioni.")
 else throw A.i(u.s)
 return new A.a6(p,o)},
@@ -41294,7 +41294,7 @@ p=A.hk(p,B.a0,B.Z,B.aV)
 o=this.a
 s=o.d
 o=A.X(new A.a5(s,new A.akR(o,this.c,a),A.a_(s).i("a5<1,e>")),t.l7)
-o.push(A.kW(B.VP,new A.akS(a),r))
+o.push(A.kW(B.VN,new A.akS(a),r))
 return A.jX(o,B.dj,B.Vu,new A.c7(q,B.n),p)},
 $S:26}
 A.akR.prototype={
@@ -41364,7 +41364,7 @@ $0(){return this.a.d[this.b].b=B.d.eJ(this.c.a.a)},
 $S:0}
 A.akL.prototype={
 $1(a){var s=null,r=this.a,q=this.b,p=A.c8("Sei sicuro di voler eliminare "+r.d[q].b+"?\n\nTutti i dati e la scheda verranno persi.",s,s,s,s,s,s,s)
-return A.jX(A.c([A.kW(B.zv,new A.akJ(a),s),A.rq(B.VR,new A.akK(r,q,a),A.IO(s,s,B.c6,s,s,s,s,s,s,B.k,s,s,s,s,s,s,s,s,s,s))],t.p),s,p,s,B.W_)},
+return A.jX(A.c([A.kW(B.zv,new A.akJ(a),s),A.rq(B.VP,new A.akK(r,q,a),A.IO(s,s,B.c6,s,s,s,s,s,s,B.k,s,s,s,s,s,s,s,s,s,s))],t.p),s,p,s,B.W_)},
 $S:26}
 A.akJ.prototype={
 $0(){A.dB(this.a,!1).fD(null)
@@ -41457,7 +41457,7 @@ ta(a){var s,r,q,p,o,n,m="Nessuna sessione trovata nel file."
 a=a
 a=J.auI(a)
 if(J.bG(a)===0)throw A.i("Il testo \xe8 vuoto.")
-if(J.H_(a,"TIPO:SCHEDA_GYM"))throw A.i("Questo \xe8 un file scheda (.gym) per l'atleta, non un file progressi.\n\nL'atleta deve usare 'Invia progressi' e inviarti il file .gymlog.")
+if(J.H_(a,"TIPO:SCHEDA_GYM"))throw A.i("Questo \xe8 un file scheda (.workout) per l'atleta, non un file progressi.\n\nL'atleta deve usare 'Invia progressi' e inviarti il file .gymlog.")
 if(J.H_(a,"TIPO:PROGRESSI_GYM"))a=B.d.eJ(J.ar7(a,J.ar6(a,"\n")+1))
 if(J.bG(a)===0)throw A.i("Il file \xe8 vuoto dopo l'intestazione.")
 s=null
@@ -41469,7 +41469,7 @@ o=null}else if(t.f.b(s))if(s.av("logs")){n=s.h(0,"logs")
 if(!q.b(n)||J.hc(n))throw A.i(m)
 o=A.cb(s.h(0,"clientName"))
 q=J.fF(n,new A.ah2(),t.a)
-p=A.X(q,q.$ti.i("aj.E"))}else if(s.av("routine"))throw A.i("Questo sembra una scheda (.gym), non un file progressi.\n\nL'atleta deve inviarti un file .gymlog.")
+p=A.X(q,q.$ti.i("aj.E"))}else if(s.av("routine"))throw A.i("Questo sembra una scheda (.workout), non un file progressi.\n\nL'atleta deve inviarti un file .gymlog.")
 else throw A.i("Struttura JSON non riconosciuta. Manca la chiave 'logs'.")
 else throw A.i(u.s)
 return new A.a6(p,o)},
@@ -41478,7 +41478,7 @@ if(s==null)return
 A.lr(!0,new A.ah0(a),s,t.z)},
 L(a){var s=null
 return new A.x4(2,A.asx(A.auS(B.Qw,A.c8(this.a.c.b.toUpperCase(),s,s,s,s,s,s,s)),new A.Bi(A.c([this.a4c(),this.a3V()],t.p),s),s),s)},
-a4c(){var s=this,r=null,q=A.c([A.arH(B.Gr,B.VK,s.ga3o(),r)],t.p),p=s.a.c.c
+a4c(){var s=this,r=null,q=A.c([A.arH(B.Gr,B.VJ,s.ga3o(),r)],t.p),p=s.a.c.c
 B.b.P(q,new A.oB(p,A.a_(p).i("oB<1>")).ghp().hu(0,new A.agL(s),t.l7))
 q.push(B.l6)
 q.push(A.arH(B.Gk,B.Vx,s.ga5b(),A.IO(r,r,B.bp,r,r,r,r,r,r,B.l,r,B.PD,r,r,r,r,r,r,r,r)))
@@ -41708,7 +41708,7 @@ r=A.jv(!1,new A.f4(new A.c1(n,B.bT,B.ao),r),B.Gu,a0,a0,2,new A.agu(a5),a0,a0,B.a
 n=A.az(40,B.cX.C()>>>16&255,B.cX.C()>>>8&255,B.cX.C()&255)
 m=A.hg(8)
 l=new A.aM(A.az(80,B.cX.C()>>>16&255,B.cX.C()>>>8&255,B.cX.C()&255),1,B.r,-1)
-k=A.c([B.VY],s)
+k=A.c([B.VX],s)
 j=t.l7
 i=J.rJ(5,j)
 for(h=a5.f,g=0;g<5;++g){f=h===g
@@ -41847,7 +41847,7 @@ $0(){return B.b.D(this.b.a.c.c,new A.hN(this.a.a,A.c([],t.yW)))},
 $S:0}
 A.agR.prototype={
 $1(a){var s=null,r=A.hg(16),q=this.a
-return A.jX(s,B.dj,A.hk(A.c([A.Kb(s,s,s,!0,!0,B.Gm,s,new A.agP(q,a),s,B.VX,B.VM,s,s),B.EN,A.Kb(s,s,s,!0,!0,B.Gq,s,new A.agQ(q,a),s,B.VO,B.VG,s,s)],t.p),B.a0,B.Z,B.aV),new A.c7(r,B.n),B.Vt)},
+return A.jX(s,B.dj,A.hk(A.c([A.Kb(s,s,s,!0,!0,B.Gm,s,new A.agP(q,a),s,B.VY,B.VT,s,s),B.EN,A.Kb(s,s,s,!0,!0,B.Gq,s,new A.agQ(q,a),s,B.VM,B.VG,s,s)],t.p),B.a0,B.Z,B.aV),new A.c7(r,B.n),B.Vt)},
 $S:26}
 A.agP.prototype={
 $0(){var s=0,r=A.N(t.H),q=this
@@ -41869,7 +41869,7 @@ r.P(s,this.a.a)},
 $S:0}
 A.agX.prototype={
 $1(a){var s=null,r=A.hg(16),q=A.wL("text/plain"),p=this.a
-return A.jX(A.c([A.kW(B.VF,new A.agU(a),s),A.rq(B.VL,new A.agV(p,this.b,a),A.IO(s,s,B.bp,s,s,s,s,s,s,B.l,s,s,s,s,s,s,s,s,s,s))],t.p),B.dj,new A.rB(q,new A.agW(p),s,t.zQ),new A.c7(r,B.n),B.Vz)},
+return A.jX(A.c([A.kW(B.VF,new A.agU(a),s),A.rq(B.VK,new A.agV(p,this.b,a),A.IO(s,s,B.bp,s,s,s,s,s,s,B.l,s,s,s,s,s,s,s,s,s,s))],t.p),B.dj,new A.rB(q,new A.agW(p),s,t.zQ),new A.c7(r,B.n),B.Vz)},
 $S:26}
 A.agW.prototype={
 $2(a,b){var s,r,q,p=null,o=b.b,n=o==null?p:o.a
@@ -90932,8 +90932,8 @@ B.Mg=new A.KS(1,"rootOverlay")
 B.Mh=new A.zp(null)
 B.Fh=new A.an(0,0,0,8)
 B.TA=new A.j(!0,B.u6,null,null,null,null,12,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VQ=new A.bz("\u26a0\ufe0f Il testo negli appunti non sembra un log valido.",null,B.TA,null,null,null,null,null,null,null)
-B.Mj=new A.bI(B.Fh,B.VQ,null)
+B.VO=new A.bz("\u26a0\ufe0f Il testo negli appunti non sembra un log valido.",null,B.TA,null,null,null,null,null,null,null)
+B.Mj=new A.bI(B.Fh,B.VO,null)
 B.uk=new A.tb(null)
 B.b5=new A.L_(0,"fill")
 B.br=new A.L_(1,"stroke")
@@ -91270,14 +91270,14 @@ B.PX=new A.jq(3,"hide")
 B.Zd=new A.jq(4,"remove")
 B.PY=new A.jq(5,"timeout")
 B.PZ=new A.tN(null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VS=new A.bz("CHIAVE ERRATA",null,null,null,null,null,null,null,null,null)
-B.Q_=new A.jp(B.VS,B.c6,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
+B.VQ=new A.bz("CHIAVE ERRATA",null,null,null,null,null,null,null,null,null)
+B.Q_=new A.jp(B.VQ,B.c6,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
 B.VB=new A.bz("Il nome dell'esercizio non pu\xf2 essere vuoto",null,null,null,null,null,null,null,null,null)
 B.Q0=new A.jp(B.VB,B.c6,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
-B.VN=new A.bz("Le serie devono essere tra 1 e 10",null,null,null,null,null,null,null,null,null)
-B.Q1=new A.jp(B.VN,B.c6,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
-B.VJ=new A.bz("File .gym pronto! Codice anche copiato negli appunti.",null,null,null,null,null,null,null,null,null)
-B.Q2=new A.jp(B.VJ,B.dy,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
+B.VL=new A.bz("Le serie devono essere tra 1 e 10",null,null,null,null,null,null,null,null,null)
+B.Q1=new A.jp(B.VL,B.c6,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
+B.VS=new A.bz("File .workout pronto! Codice anche copiato negli appunti.",null,null,null,null,null,null,null,null,null)
+B.Q2=new A.jp(B.VS,B.dy,null,null,null,null,null,null,null,null,null,null,null,B.c2,!1,null,null,null,B.I,null)
 B.z_=new A.B1(0,"permissive")
 B.Q3=new A.B1(1,"normal")
 B.Q4=new A.B1(2,"forced")
@@ -91677,25 +91677,25 @@ B.VG=new A.bz("Incolla codice",null,B.dU,null,null,null,null,null,null,null)
 B.RU=new A.j(!0,B.u5,null,null,null,null,13,B.bm,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.VH=new A.bz("\ud83d\udd17 Superserie / Circuito",null,B.RU,null,null,null,null,null,null,null)
 B.VI=new A.bz("Target Reps:",null,null,null,null,null,null,null,null,null)
-B.VK=new A.bz("NUOVA SESSIONE",null,null,null,null,null,null,null,null,null)
-B.VL=new A.bz("IMPORTA",null,null,null,null,null,null,null,null,null)
-B.VM=new A.bz("Apri file .gym",null,B.dU,null,null,null,null,null,null,null)
+B.VJ=new A.bz("NUOVA SESSIONE",null,null,null,null,null,null,null,null,null)
+B.VK=new A.bz("IMPORTA",null,null,null,null,null,null,null,null,null)
 B.zo=new A.j(!0,B.fH,null,null,null,null,11,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VO=new A.bz("Alternativa: incolla il JSON copiato dall'app dell'atleta.",null,B.zo,null,null,null,null,null,null,null)
+B.VM=new A.bz("Alternativa: incolla il JSON copiato dall'app dell'atleta.",null,B.zo,null,null,null,null,null,null,null)
 B.zu=new A.bz("OK",null,B.zr,null,null,null,null,null,null,null)
 B.Ui=new A.j(!0,B.c6,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VP=new A.bz("ANNULLA",null,B.Ui,null,null,null,null,null,null,null)
-B.VR=new A.bz("ELIMINA",null,null,null,null,null,null,null,null,null)
+B.VN=new A.bz("ANNULLA",null,B.Ui,null,null,null,null,null,null,null)
+B.VP=new A.bz("ELIMINA",null,null,null,null,null,null,null,null,null)
 B.S4=new A.j(!0,null,null,null,null,null,null,B.bm,null,3,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VT=new A.bz("COACH DASHBOARD",null,B.S4,null,null,null,null,null,null,null)
+B.VR=new A.bz("COACH DASHBOARD",null,B.S4,null,null,null,null,null,null,null)
 B.zv=new A.bz("ANNULLA",null,null,null,null,null,null,null,null,null)
+B.VT=new A.bz("Apri file .gymlog",null,B.dU,null,null,null,null,null,null,null)
 B.VU=new A.bz("Nome Workout",null,null,null,null,null,null,null,null,null)
 B.VV=new A.bz("COACH DASHBOARD",null,null,null,null,null,null,null,null,null)
 B.Ss=new A.j(!0,B.j7,null,null,null,null,10,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
 B.VW=new A.bz("Assegna lo stesso numero a esercizi consecutivi per farli senza riposo (superset). 0 = normale.",null,B.Ss,null,null,null,null,null,null,null)
-B.VX=new A.bz("L'atleta ti ha inviato un file .gym via WhatsApp o Telegram.\nSelezionalo qui.",null,B.zo,null,null,null,null,null,null,null)
 B.Rm=new A.j(!0,null,null,null,null,null,13,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.VY=new A.bz("Gruppo: ",null,B.Rm,null,null,null,null,null,null,null)
+B.VX=new A.bz("Gruppo: ",null,B.Rm,null,null,null,null,null,null,null)
+B.VY=new A.bz("L'atleta ti ha inviato un file .gymlog via WhatsApp o Telegram.\nSelezionalo qui.",null,B.zo,null,null,null,null,null,null,null)
 B.VZ=new A.bz("Rinomina atleta",null,null,null,null,null,null,null,null,null)
 B.W_=new A.bz("Elimina atleta",null,null,null,null,null,null,null,null,null)
 B.lg=new A.bz("SALVA",null,null,null,null,null,null,null,null,null)
