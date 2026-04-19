@@ -1,0 +1,84 @@
+﻿<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="Gym Coach Pro"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme" />
+
+            <!-- Avvio app -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <!-- MIME personalizzato esclusivo .gymlog — solo questa app lo gestisce -->
+            <intent-filter android:label="Gym Coach Pro">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-gymlog" />
+            </intent-filter>
+            <intent-filter android:label="Gym Coach Pro">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-gymlog" />
+            </intent-filter>
+
+            <!-- File manager con URI file:// e estensione .gymlog -->
+            <intent-filter android:label="Gym Coach Pro" android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" android:mimeType="*/*" android:pathSuffix=".gymlog" />
+            </intent-filter>
+            <!-- content:// con MIME personalizzato (es. condivisione diretta via app_cliente) -->
+            <intent-filter android:label="Gym Coach Pro" android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/x-gymlog" />
+            </intent-filter>
+            <intent-filter android:label="Gym Coach Pro" android:priority="100">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/x-gymlog" />
+            </intent-filter>
+
+            <!-- content:// octet-stream con pathPattern — WhatsApp e simili -->
+            <!-- Sicuro: .gymlog non è sottostringa di .workout e viceversa -->
+            <intent-filter android:label="Gym Coach Pro" android:priority="100">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/octet-stream" android:pathPattern=".*\\.gymlog" />
+            </intent-filter>
+
+
+
+        </activity>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.gym.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/gym_provider_paths" />
+        </provider>
+    </application>
+</manifest>
