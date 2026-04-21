@@ -4,12 +4,13 @@
   <meta charset="utf-8">
   <title>GymCoachPro</title>
   <script>
-    var segment = '';
-    if (window.location.pathname !== '/') {
-      segment = window.location.pathname.split('/').pop();
+    var pathname = window.location.pathname;
+    var baseUrl = '/gymapp-coach/docs/';
+    if (!pathname.startsWith(baseUrl)) {
+      var segment = pathname.replace(/^\/gymapp-coach\/docs\//, '');
+      sessionStorage.redirect = segment || '/';
+      window.location.href = baseUrl;
     }
-    sessionStorage.redirect = segment || '/';
-    window.location.href = '/';
   </script>
 </head>
 <body></body>
