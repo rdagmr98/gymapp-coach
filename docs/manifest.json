@@ -1,0 +1,35 @@
+{
+    "name": "GymCoachPro",
+    "short_name": "GymCoachPro",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#0B0B0D",
+    "theme_color": "#0B0B0D",
+    "description": "GymCoachPro: gestione schede e coaching per personal trainer.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/gymcoachpro-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/gymcoachpro-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/gymcoachpro-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/gymcoachpro-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

@@ -576,7 +576,7 @@ final List<Map<String, dynamic>> kWorkoutTemplates = [
             'notePT': '',
             'noteCliente': '',
             'supersetGroup': 0,
-            'gifFilename': 'shoulder_press_macchina',
+            'gifFilename': 'lever-shoulder-press',
           },
           {
             'name': 'Alzate Frontali',
@@ -2245,49 +2245,49 @@ final List<Map<String, dynamic>> kCuratedWorkoutTemplates = [
     'desc': '5 giorni · petto / dorso / gambe / spalle / braccia',
     'icon': '🔥',
     'payload':
-        'GYM1:H4sIAEl34mkC_82XXU_bMBSG_4qV63gCNhDjDsrGJsEUUXY19cJxDok1x85sh1IQ_33HTlpKXIo0qSwCIXTi2M_5en3ymHApQLkfrIbkJLkQTNXMcJ2kidGtEwqtvx6Tgi36FRk455_mulhkzDiLz5MmGGdpUreWS_hes9KvDeYPjSpxPdyD4cKCDfupbrNpLVxFrhiv8CByBopXJDNgLb7gmCnBTcGf8AlpoLGXwjp8_TgNPzNv5PoOzOJG-O0-76WJUA7Ml_6sjLUW7fsH-EBpB9kNnvnTCSkeHpgBctVKJxo9B5N0CyYhFp4MDbZtwFhwFxiIJjnBPUpx-1VI6OGth6d1B09zD0-bAP-Urjz8JsqKTFgugUyMttbj7tC5f_GjQkTKPSLlK8Q1F84RDJQVWglSM9XmRozMg6Kt8xykjMOfAXfaMEn6NI0MvAFOC-C_6a1cJE8zD_7caefa2KjTLLqBb8e9VvjV23rtkrllFAjXCt0rA-j_jcharq71fCRpWi-gVkpYjIenk5KpMwy71pFTUxOPWOi52gq5v5cuf9-xvjtVsT0tZaamzZJ2WO4XrM5hWO5lMEbFHszbiv0MpCP2T8vcICrHm1KXvn_no1w52gGuZfcSSgL3vdoOyD--zOdhun-w22QOuCatkWQKRRuu_zGpqAXmoKASSsoRMtkAPjLiZ9RBE0wbhnoTiX5njdqgs28dsCrdygJMN1X5ScvrKxuPnp3KB0weuTVaOSbF9pp_TcCOdlLzyOUnh2uGGy5n1K1qEhoyjf7uEDeqq46ZGs-8HE2TONz9OvHWlXG8cw9itkzjuGmEfmPK7AO8t6FQj3ao2spRfxJ9Eemojc8MNppgwz7Oe3PUyP2DrTea4Oj8KwPS4eZb7T0rD3xUcP5GPvxnqMPh8uDsTpACWypn1urRudANK26uw5ziPaBaUaHwA3n5fRe5VLG6jj7oxuKK0Q3QjjBKSNbaivg5zGdlfLnQGHGfBePLCqWsQVzajY0bfdCmYKNzIsTfkw_B8ZbnnHHDlBhf6PtpapmB1be1M0GB6PN8iqo3e_oLC6XmDEESAAA',
+        'GYM1:H4sIAApl5WkC_81XXU_bMBT9K1ae4wnYQGxvtHxsEkwRZU9THxznklhz7Mx2KAXx33cdp12bhCJNootaVdW1Y5_j43vuzXPEpQDlvrMSoi_RlWCqZIbrKI6Mrp1QGP35HGVs2c5IwDk_mupsmTDjLI5HVROcx1FZWy7hW8lyP7cJf6hUjvPhEQwXFmyzngqLzUrhCnLDeIEbkQkoXpDEgLX4gGMmBzcDv8MnRAOVvRbW4eOncfOZ-yDXD2CWd8Iv9_kgjoRyYC7avRJWW4wfHuGA0g6SO9zzhxNSPD0xA-Smlk5UegEmChOmzVl4ZBiwdQXGgrvCg6iiL7hGLu4vhYQWvPXgaRnA09SDp1UD_iVeM_wq8oJMWSqBTI221sN9R3L_wqNAiJR7iJSvIW5QOEdgoKzQSpCSqTo1YmQMsrpMU5Cyf_wJcKcNk6SVaWTAK-A0A_6L3stl9DL3wP9m2rk2tpdpFmng0_1cy_zsXbl2zdwq00Z2CpI5WtVSZnqhNsVb-cKtXowMsQXmIKNGL1b5v3XpkAssyYTZRr8RAg_ZjvA3YQeXmjnD0BAcOTMlSVaq7GJxeBCvvntkEijYFi1lpty4Q51MumJlCt1MyptgL4-a8K48moB0xP6umeucyumQtvH-NUYndDQA3FD3GnJy8dgaeQf5x209j-PDo_2KKSGnsAbXQT2tjSQzyGo30mzy6DmCHAI-NqtdQ-2kyKxiaFq9ahOivSQJ8Z2dXaFrmYEJ7ZwvPN4m2dgE3GrhbIu530acySdUmlwarRyTYnf6vOaFJ-_f_9x7gBQt0W4VJCz94JugWz_wShOw7V6NAcS93z1ykgFzIDNUZVtNWm7irRJ1uncGa1W2qAxQSDQ22EboN_rqVoeDgQw5ecdighfK79Rl0fGPicEMF6xrIGkb7jlIO7Cz0AqO5F_p3I-Hi-0-Lyg8BKtAfPinWwCaqsXZgyAZZl460Av-fwqhh3IL3bRPngHVigrF5fqNtkepYGXZe4UdCxWjK6ABYU-QpLYF8e2hV2V8Wmg8ca-C8dcKHa9CuLT7RrTBQZuMjY5Ec_4eeRc4thecM26YEuM7-raNWymw9m1nGgfa7Ezn-PkDop31-TMTAAA',
   },
   {
     'name': 'Ivan A/B',
     'desc': '2 giorni · upper / lower',
     'icon': '🏋️',
     'payload':
-        'GYM1:H4sIAEl34mkC_82UTWvDMAyG_4rx2Ye0-2DrrStjDMoItLfRg-aIxuDYQVa6dqX_fUpbKPvsLc3FGL2y_FiStdXWOwz8AhXqkX5eQdBGU2zYBTG8bnUBm6M4FgXXSNYlTHstHIQcggVVOwggLgy0RJ4hi8-1xMI6TV1iOTAYmkFm7sztojXbuELazF0b4j4z2gVGejzGz6FJYh8MRQiRMZ_LPfqwn-yJ8WBITY2UkJ-EudajbGdOWGg5EnhVgS3b53xlu_qNrRuyKXD_oPLGe9z0qYCThnx_8tPSqBKqCunSUIsW6_QxH_76mFNcqpowpf-Bb8yeuaPeFyZcM4bkYvjGNfyZyO6gbK-6bVbGxhdIKj9fvy65xv4DGJWXRUar69P4SmUR34N6AyLoIZeNVMDlJ8di9wkhEk759AcAAA',
+        'GYM1:H4sIAApl5WkC_82VUWvbMBDHv4rQsw1Nuo2tb03WjUG6GZq3EcJZvsXHZElIctqs7LvvZJs2c9Y-ZsYgzJ18-p3811-PUmlCE79Cg_JKftmDkZn0to1kOPD9UVZwGJLXnMEH9IoChi5n-kQBRoEoCAzwlAh-h_EOI895w7XQhRWFyB_M5tnsInufvduksLJ79Ic1pRIfLjJJJqK_GeoX0AaOz-acMDZiseZ1ZP--7IixD4TWoQ8YPzOzk1c8fUc_PpHGga1Eo-rceQxB_s6ekVH9FB95GAFf_gv4jLiOkbZV4jqCXUEUt6Dq9Eumhash5q7VurL35q_t5RgexAJCsJOTRECIWOUKSo25t_fH4MvWa6GsEQvSrGpCP7UtL8GXqHWumPSE_BZ85KSdGHMNTYN-QN4k6GdXWbzkKivciaI7t6828zbr-jmn6HF3aiiJ9uYhoglkzYh4frr9Z8bFJ7IRclLN1DyFecfivqttqyv0vSCSGSY3hImRh4ZinTe9U-dhYD7VyrX-xQ4k2NbRg6aJdVG1Tdk5jO75cg9c_ph_7UmRo0gCSCxhP7UOvHXI11Kox9fSN169RqhE6gDdiwf2fzdgB85t7Di3R8d3w88fY9uharUJAAA',
   },
   {
     'name': 'Angela 3 Day',
     'desc': '3 giorni · split personalizzata',
     'icon': '⚡',
     'payload':
-        'GYM1:H4sIAEl34mkC_82WwW7bMAyGX0XQ2Qcn64ast6Boe1gxGEhvQw6MzMXCZMmjqK1Z0XfaM-zJRsXJ0GXp2u3gGBYEg5StzyR_0ffaOIue30OL-lzP_Rod6EJTSGy9mD7c6xo2O3eVYiNOvEMyNmLcun3vu4S4UVX4iqQWDGyDl5UMtEZeIMvSM3krdvHGRpbnZsX2WmajCV-QNrc2v-dtWWjrGelyt0kFKYp9MhWHD4zVrWym-_uLLTv2hpg6pIh8LeydPi8fil9sVXION-PhkQAZ01hFqUVvFTjVJse2y9E7oHz1J-UwjNcuMUbVgoBKIYyE6p01n9QKZGrBpxXZ8NesTspCxmB0V4TeNKojjFGZQDWcnm6Z-R5L2LmnJHzlhFuEa1XMglFr60Ou02e-Ylbsx0BqRsOBsmiO1uYJdT2v65TZXqSaPvuTciC01WjRLhK5vZxVxDoxqDflj-9jUvaWsYG2Rdqjjk7aN7h-StmLzwl4RP0YfZ1casfSVSRyCu8YfT791AukMSCXkco7IJoeEg3129KE5GpRQN_gjuvgZEmcu2_AqD5S8AzOHu2_J8zlDs_JRBnvePRe_w447U-Rf6Oc_cdBsnz4CVcMc1cKDAAA',
+        'GYM1:H4sIAApl5WkC_82Wb2_aMBDGv0qU11gCtkms7ygr2ws6ocFeTVXlOAc54diZ_7RlVb_7ziR0WdKiVZpClAghX-z8zr7nyT3GQiIo95XnEF_EU7UFyeNBbLR3qGjox2Oc8n0VXnqbURAewAi0YA9hVcW4EjxaIldhvuNmC24Fjp55T8tBYRdoHU2YDA7XTRgU-g7Mfo1hgY_DQYzKgbmqVl9yb2l8NKaA0g6Wa3pLXP6fHaChHLC-AGPBfSboIr6gx7e4maOEiiwBJTJWGLA2fhr8AfZSwj665NbqnhFb4A5SJngigRl9X8f-pnOuaJejT8BTiRvXYH_XZu-Q3FR0LD3S1dC_YBGtM-Ntv5gzLG5diVWDXRsUWKDDiGM043d4skZGwwHdXe91AawgSab6XtXR5yZUfLQ8VHzfqFOfJwlIyeyOBMgE7XsGJn66CQnUrUbKV62GprDvxenUJoPj3WFy4TQYReo2A2JHWhW7nnlMQUi3aeBqKHSapF44bU5qtKyc0bBjmfIj29td5UzEbWOZeSMjoVV0zZVPDEZTSS9X3GF_tSqIuZXDNTeOgrp32BnPczAVdMNXFrB9zVZWPz13h5O5REndDIKBvjUGAbF-EJTOiz5_3i-qhG273wqoVw8OlEWt_kGqXQPDM1sDOhR7g3fc5O0atinIVaa9TMGUxUDSFCLDVid-3qqwObqM5TyQAbMVcbtQpvIXtb_R3GjluMSelcqzJ24CHzOcFn-BfkE_pk3_4W_6cWmOb0th8t9SkCXkMYkbun4D0U-glBEOAAA',
   },
   {
     'name': 'Elisa PPL',
     'desc': '3 giorni · pull / push / legs',
     'icon': '💎',
     'payload':
-        'GYM1:H4sIAEl34mkC_82VTU_DMAyG_0qUcw_rAAl2QxOww4QqthvaIcusNSJLiu3sg2n_nWSdEAI0bl3UqmrtxH1k-433UlsDjp_VCuRAPlhDShYSfWDjouV1Lxdqd_JWwVoRP-MC2AJqQ0DHJa71v_iNWCldp52FZIVL4AlwXHMdQ0JDY0McN9wWx2uWjNqvAXdTkwLc9QppHAM-nKJXKlC0l_3ocJ6hmsa_yPZ9eOSG1kChASTgpwjeyEHvUHxBtdB-44T2uFA_wK5-g3WDNQxohVZrL2iuELPhmrDS2gsMK3BezI1VThvA_wta9uLdDeMYlkLH_F26yWaJ6bs8qD4nj2ENxKJBIMqmC9Frk9rQ5ELUJjE7uT4iOF23xcuLbFL7YBeAeTXWvf1QDMLGBypr4lhwYY7mrGLLm6Lsp3OkS9Gms-SMZpO7-iOxFxxoI6XfBL0HxbkUOyUJtgyOjHdnoY5DorM5MTKN4BoDcT7Vy2d2zQ6f9VHGPf0JAAA',
+        'GYM1:H4sIAApl5WkC_9WWwW7bMAyGX0Xw2QKabgO23lY33Q7dFjS5DUGgyExMTJY8Sm6aFX33UbFbGE2Q9ZRqsA-2RMuf6Z8_9ZBpg2DDd1VDdpGNDXqV5Rm5NqDlkZ8PWam2_eykNUbwLQfAPZBGD34XYrv5b0pX_JS4dRsOCYrWEKYQOOY9LwmNv0Ef-IGP-e6Yx0Ht7oC2M4wLfDrLM7QBaNyvPlGt5_HROU9YF2Ay47dk3XWx44ZuwLcNkIfwhcGb7ILD17i6RgM9mQcVoJTkNrLuILPH_Jn7RgXRs7_gfrfPfUJqo4JsOOel29ghb9GSEcqIQt05cam8d0lha7U0IDVDDqFvXa0sKiuuQJUGV-GfEhmd8XlCbuoJZflEONQIrEXMe2LCNrDuMz2PsMNa9dWxWi0q8EFMCLyP2o_iV2mpKALKJgIeqtmCnEahnWV62y4Jk4Iv23q5BGPkymyH1D_45RWrS8wINTRifB_AenQ2KXrXUy7CjnIBz5SDT7kmsLrqFJRm7v0v9k6piSsBaIg-rVxrSqCU5e9rDNWT8KXvibt6GH7LZ_OHW5vgFgakDB61p9GHfHQebfVNfofpECUpXn7Pr6K_HrGrOH1Iain4794_mf5ueUcRvekSjbIagdLaWPgI-LK7vc6Ldk35tH055vigBX3FRswqru-QmCoqbBahA_u_thDzx79h3fVZEQwAAA',
   },
   {
     'name': 'Gaetano PPL',
     'desc': '3 giorni · pull / push / legs',
     'icon': '🧠',
     'payload':
-        'GYM1:H4sIAEl34mkC_81W32_UMAz-V6o8V-hu_BDsDQ00kCZUcXtD9-CmVs8ijYudbjsm_nfc3g1BVU680KtSVZGdxJ8d-3MenQ-EMX2CBt2luwZMENnlTrhLFE325dFVsD_qiy4EU5Zc7QuQpKZ2pYD3BG6bu6ZTH_BjA3W_uLXFz9pY2wZ8QPGkqMN58XDYZ77PGvA7M5O1ggr25wi2PIHUmDbYG3hpWLDVG9Jkm1_lr4exXm17uec7lP0t9ee9WeWOYkJ5fzRWQKcmX1-YInLC4taMusP8avAaDwLtWhTFdG1Ot-5y9SP_hbF3GPcjSC8mIM0JqOL7mJUgAieBrVf50zcPtqtOQlZSgOgJBRcUtQOyPmKZhzu2qSovMHg7aBqUzLNU47t9Pgnvf2Lb9uh-r33djWtfW7D6mCp93Z0q_XfmBUYljmQUELtSaEnZIuwpA-pzhZaVJQX6xALhiThPJslAlfPg2uy4C5WlbmFErgu6y7fhOyTMgv0sbP9ym7PFbAQta9mKQoiF_k5SZ2eBG6x1zAI1NOUECQziUyxgZw2Nf0n58gH8V0tj_dZBOnvs8z9ChQ9HzhzhuhgX_XyQvDWtpVBQ35-Gl5FSrDnwUESLerkd8U119zO3lU1rb3jwApH4vPe5tfETVx4WJJUMAAA',
+        'GYM1:H4sIAApl5WkC_82Wb2-bMBDGvwry6zCl3R9tfbdmbTUp2dCSd1UUHeYKVo3NbNOUVf3uOwONUkqjvAooURTZ5vy788NzfmJcClTuF-TILtgNoAOl2YQZXTqhaOz2iSVQtfNRKSVNxjqpIjDO0jSLDXAugK0nLC8tl_gzh9QvLmjxh0Kl9AA-ouHCoq3jqSbYAnhGWwR_9JaWODApuiX6oJ9pfyzsXFhHD3yZfK0_Z9O1H-f6AU21Ej7Gt-mECeXQXLUbRFBaGj87pwmlHUYr2og1_2d1ptgM2LJAY9HdUKIFu6Dlqbi7FhJbOIvgMAmN3oZ5w8meJzt0XwesgkuwVnfYP_WwD0HOIZbo-fe55-CCtuwHsc-mk5fvCckluNCLJtFbtU89K40MuFbBpZCguECDYyt6DCZGKUNOqG_QQQYzeNBHyGWYujdS6UVf0FtOeXWpP_ZSnxA5gzxH0zKvPfW-Sdmsa1K2AHpj-zzKZoc8amY0F7X2FqDK2IixCS8p87hW3p2sXp1eDQ7CK0-M8V2vhEpbk-qgR8jvgx_0c1B0dU84IXBBQJvEU-2hLjNdygRNEBm01lur91YYXUvIhcte-lhoW-iw8ND76XyX_6h3BNQl0IA8RjanPYOd2GVDGBqg8MdnMLhtvZdAx8HmmNqug6WQxz0GVg8fcjCK1ahzbKKUmL5V4PJvSVeUg71-8EO0nvHVrYpKfPXoUFmhVYf2vGtaJ64w7rg6wL69j8pgPW33DrIygotCuOM62QAiNrrA0F8iunfW37R7hpAEPgUs3tXHGHqxblk3rmbd9Grm2qDiWa-VDKubnafa-9LfwA2dBhrvqevn_68FreTfDgAA',
   },
   {
     'name': 'Valentina 4/4',
     'desc': '4 giorni · split completa',
     'icon': '🚀',
     'payload':
-        'GYM1:H4sIAEl34mkC_82XzW7aQBDHX2XkSy5uGz5SJblFqGmqRhUqaXuoOIzXA6yy3nX3g0CivE-OfYb2xTo2NIdAIIBwLFmWWY93fx7P_ufPXSSUJO2_YEbRafQdFf-QGqM4sibwFY_-vItSnM4jfhh7zTeg8a7NMYlJp1203nFUP46y4ISiTxkOi9A8KPU210OOowlZIR25cjY9m-oSPWQoRrwIeIu3U0jQcrBHOyTfo2LWFnNQ7i6l8_xo4zA-jt_3izFhxmSnV7KY6eQwjqT2ZD_Ml-licDzeaPINbTx1r3i5aHbdKd-XZgMu5GQd-Y_8snl0engfP9JdvakTzVfK0BtLnDAdEishRy0QGkd_fteGscvfOzU3GoSxKe4Pq0cgDv4-QHAICmEc1DXpDVk_S3HN5caneUJrlEU3qiKLG2KdW9JiBLkl50Dg2AAqb57gNRfwtoTb6pv2pIeQc940pNIJszp3R3F5LAC2XgTYgglXzuRFhP2CcVFBm-sV9FfA1Eohc-nlKiXtcaDnDwJZUF7m5oaeKld7sXAqK50L3mZkwRWQq7GaMZPtUDYbgl3SEGjiSTtpdG122lmaBsFa_7831gdsMDA6lSA14Bj1LY9qb9bhlUc1gB1Ug5lCrS6z43LrHy_b_ftp3sE5ieBvivW3EqWTqkSp9RJb50arxKhLRfUWYrS0fl9TiTrWCAkoiwYmwYVKXNS3wqZQueSQOS3tBJ2iUgdLWm-NgM_ULXqCgTXao5L7FIitfMKcT_GJy1Q-4wCPnmlNVTWnjg2F4UpNnkuzVs_mx5Zo7Z11o71eN4YqeFppYy5kDn5kwzqVrLDn9TwKVjGwgZudLL1lIhWrxnxf1IOyMDIiWFUfq5Bs5mGqNAmcp0c1TZA78z4b1M7iX9COMMvYQC_7Q_ia3fRcsdNi58xNiRQkvG3XNKXdRGozd9O__we6RQy22xIAAA',
+        'GYM1:H4sIAApl5WkC_82Y0U7bMBSGX8XKzW6SDWiZgDsosE2CrYJuu5gQOnFOU6uOndkO0CHeZ--xF9txUlhpSmGlrSJFVZs48Xdi-_9_9zbgUqBynyHDYC_4BpJ-CAVBGBhd0Dc6--M2SGA0bvFdmyFdYJvv2tQm1smoC8ZZanURBllhucRPGaS-aV5I-TZXKbXDGzRcWLTl01T1qBNw7BT4wHcSBg5Miu4c_bNa1Dvm9kRYRzdsboQ74fsLf47rKzSjnvD3726EgVAOzdH44V0oLJ3f3KILSjvs9qiToPreKavE6oQtcjQW3QcqMQ_2qHkq-seCSq_AJLjIwyf6WgV34QPwGWbgtEHGtWIHQoLiAk3D4GMwMUoZxXRL5HuMjL6erKJLleGIHYC1ulnoFsFhEnGIJU5TP3r3p6CK2IgV4p9TR2_-_GaFBSaBXRVyiGqRmpIii8vxmKqnZwQXuXCCgWAduBLNGgqjc6Q1YAfTa-AL9T5ASJgvAHN2dONQWaFVs_j1GPPSlZiX-IA5UcuxQcUHrGvQ2in8rRr-gvBLmDl2SCs24oZGA80kf8cUxD__xW-H5VGjb72IvsVuWAY3i-DzCu7uwgPX_WPref_4WUByv0rm-cg5NXTzNbldn41rljbPODl2J5jOnHhTpFshwb5i-i1kf5hGeYk2xdvQte55Z67vjyJn-3FScDKOZiEPRH4J92QTxPv9vlbJs15QHmvEfZAiWShampMSBLLPzqBcknMn8k6pQzuzpGh13JzoIuPpHkWJwloBivWuPdtC6rm7avU0FWPkSsanRLT1khBuB_PEs4t8yA7po2mKmRPTZeLBHjme5mtITF996qMESJ2kcmwn_y9LI6HScZjty9GjCE4uBaxLAwwNLyL2CanuBvvyF0V1dmy0ciBXqldLCFB9j1nXgXERtA1FUy9i-wkjXqsV_xPeCrJexMwMWNfe8bEgentVKbD9vIClsnA4N_95m-8NSDFd80zeVVyT7qMzUN5-Dml7IkXfNW3jV-FFyT3eVAjsFEY2L_9xT7Vg9Ft3mnoq_Pk3y0B6b9Mz_55ZqicvxR4qd5t--WUhp7SgSbl003LFALIMTZ35BXvp14noUvbSF3d_AeQpIbSyFQAA',
   },
   {
     'name': 'Andrea 4/4',
     'desc': '4 giorni · split completa',
     'icon': '👊',
     'payload':
-        'GYM1:H4sIAEl34mkC_-WX32rbMBTGX0Xo2rD8hax3Id26QRih6d3IxbF8GgtkyTuS2mSl77Rn2JPt2ElbSEK3JTQTDIIxUiz9ztH5vmM_SGU02vAFKpQXcmwLQpCZJBeDtjz09UEWsN5Od98NeC53xXoGFDzPLjJZRa8Mfq5gyX-x0ZhM4gpJaY--fd5uHr5299ouRQWq5JVFTehBWIyBmg0D0BLDHJtV-7w_1n6qfeAFur2s28lGi2ZQuTuk9Y1uFnzfyaS2AenDdrcZRM_j3R5PWBdwdsO7ys39pI0SNwM-1kgewxVHWcuLzmP2DDmF8ESYDtQ1VhAcIZPZmJMWNVgFAkR3-PNHOpgzPvvC3VuhHBWQEpcvW64cKKVa-0hoVdkKwaeWs3kNSoEisNrtUPX2qd6SadFQvVhQ7xQLmn-LEHbCGeyF0-b5bYN6SfQnXYtA0QeRa8Oy1kj4W8LOOSshcCWUWlCs0OonC0oKcZwXUbFBpufcEzC3G4G_nrBR1vyGXHtnsh7DSNrxeRZoRM7l515P2rClGx5J1xcrPpvVMXrvn6L3S6ZHuwn0zwt3dLbqIKf0TlNPq6VPSmRnOlTA_7I3lS6aAknM0uIam-8QUBi-EJi0LHJCsXXxwtX1XkcfHNT68XIfHC_3wSlyv3IGQwDhD7T5_sH0_-_9aYpLgautR6aFpSKZhIyQaZ6dWltRayx0Ynjt541QcOf41nuXGF4JVcWmfRv3BHDmL4oTXoM6J9nG370GLR5_AUa8WZ6dEQAA',
+        'GYM1:H4sIAApl5WkC_9WXX0_bMBDAv4qV50RraZEYb6WDDQmmCvo2VdPFuTbWHDuzHWiH-O47JwGytupQ2cBIfajs2P7d_7u7iEuByn2FAqPjaKQygxDFkdGVE4qWvt1FGaza7f6HIe2lOltNwDhLu7M4KirLJZ4XsKBPVCVlHOESDRcWbX1eNYcvged0JbvSt3SJA7NAd43-lgG9h6W9ENbRgf5B3O_FRzO_yPUNmtVU-As-9uJIKIfmtL19ApWl9f4BbSjtcDKlV6Lm_7iWCpsFW5VoLLrPJFUZHdPnCzE_ExJbMovgMEuMvk2KBjK6jx-5L8Cxlj0wbgkuKUnhmb5VXeIrLMBpg4xrxU6EBMUFmtDoUzApSpmkdCTxL3oDvG_FT43gohROMBBsDDciMG6jSyRwm6-DnxlUPGcTg9YGxpxVRVr7if1BGk-4IXw0XfhxZeRuVz_YlOENHJ0TZ3Q_8-RPKfXgJSn1-mdFMbJT9OGG6LUFX1UB1mN2LfZFlGyakyXdX2l7r-1vuSi_u4atm1J1AUqAYp8QMinmAYKbFjHJHhDXND5Ks4pTXQgswL3C4QGtG9Yg5-wKap_fqeyj2P8OybNfkZoTXWI83R_MpqI8ulvBhzXr4Z6sA7ZkBSz3Qm7g1jPQ4CUZaGw0F3UGugRVpUY8Iy6O3qZ-zOWqa6oJ5UtgEwoYCK0x8rU4Keta3PWtHK1rSrRvi3xfFBo594gN-bZO-jrXlczQhC2ELYTLH_AT2zJv2mMkf9HYwKhLRQNShFcQHj1fNoib6aqJgXNFM6ACB7tFaPPW_qlruH_qEjUiJp2Z4SlE1vLZ8D93VIOtln3rduqdFfcLXLDTpUNlhVahTXe4SPCRbQ3aDxsB8jazxZaZqC3LbCTpaQpyEep4t1UCkH6M1uwErNWhFTtIJW7HvqTEQzLpoMbQHIqC6tgG8DNa1t6Lctw_aVln978BapFsfKsUAAA',
   },
 ];
 
@@ -3201,69 +3201,129 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       _reorderExercises(dayIdx, oldIndex, newIndex),
                   itemBuilder: (_, exIdx) {
                     final ex = day.exercises[exIdx];
-                    final exerciseTile = ListTile(
+                    final exerciseTile = Container(
                       key: ObjectKey(ex),
-                      title: Row(
-                        children: [
-                          if (ex.supersetGroup > 0)
-                            Container(
-                              margin: const EdgeInsets.only(right: 6),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                                vertical: 1,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.deepPurple,
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Text(
-                                'S${ex.supersetGroup}',
-                                style: const TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          Flexible(
-                            child: Text(
-                              ex.name,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ),
-                        ],
+                      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1C1C1E),
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(
+                          color: ex.supersetGroup > 0 ? Colors.deepPurple.withAlpha(120) : Colors.white10,
+                          width: ex.supersetGroup > 0 ? 1.5 : 1,
+                        ),
                       ),
-                      subtitle: Text(
-                        "${ex.targetSets}s | ${ex.repsList.join('-')} reps",
-                      ),
-                      trailing: Row(
-                        mainAxisSize: MainAxisSize.min,
+                      child: Row(
                         children: [
-                          IconButton(
-                            icon: const Icon(
-                              Icons.edit,
-                              color: Colors.blueAccent,
+                          // GIF thumbnail
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(14),
+                              bottomLeft: Radius.circular(14),
                             ),
-                            onPressed: () =>
-                                _addExDialog(dayIdx, editIndex: exIdx),
+                            child: ex.gifFilename != null
+                                ? Image.asset(
+                                    exerciseAnimationAssetPath(ex.gifFilename!),
+                                    width: 70,
+                                    height: 70,
+                                    fit: BoxFit.cover,
+                                    gaplessPlayback: true,
+                                    errorBuilder: (_, __, ___) => _noGifPlaceholder(),
+                                  )
+                                : (() {
+                                    final found = findAnyExercise(ex.name);
+                                    return found?.gifSlug != null
+                                        ? Image.asset(
+                                            exerciseAnimationAssetPath(found!.gifSlug),
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.cover,
+                                            gaplessPlayback: true,
+                                            errorBuilder: (_, __, ___) => _noGifPlaceholder(),
+                                          )
+                                        : _noGifPlaceholder();
+                                  })(),
                           ),
-                          IconButton(
-                            icon: const Icon(
-                              Icons.delete_forever,
-                              color: Colors.red,
+                          const SizedBox(width: 10),
+                          // Info
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      if (ex.supersetGroup > 0)
+                                        Container(
+                                          margin: const EdgeInsets.only(right: 6),
+                                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                          decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius: BorderRadius.circular(6),
+                                          ),
+                                          child: Text(
+                                            'S${ex.supersetGroup}',
+                                            style: const TextStyle(fontSize: 9, color: Colors.white, fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      Flexible(
+                                        child: Text(
+                                          ex.name,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    '${ex.targetSets} serie · ${ex.repsList.join('-')} reps · ${ex.recoveryTime}s riposo',
+                                    style: const TextStyle(color: Colors.white38, fontSize: 11),
+                                  ),
+                                  if (ex.notePT.isNotEmpty) ...[
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      '📝 ${ex.notePT}',
+                                      style: const TextStyle(color: Colors.amber, fontSize: 10),
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  ],
+                                ],
+                              ),
                             ),
-                            onPressed: () {
-                              setState(() => day.exercises.removeAt(exIdx));
-                              widget.onUpdate();
-                            },
                           ),
-                          Icon(
-                            Icons.drag_indicator_rounded,
-                            color: _isReordering
-                                ? Colors.amber
-                                : Colors.white38,
+                          // Actions
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.edit_rounded, color: Colors.white38, size: 18),
+                                onPressed: () => _addExDialog(dayIdx, editIndex: exIdx),
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                              ),
+                              const SizedBox(height: 4),
+                              IconButton(
+                                icon: const Icon(Icons.remove_circle_outline, color: Colors.redAccent, size: 18),
+                                onPressed: () {
+                                  setState(() => day.exercises.removeAt(exIdx));
+                                  widget.onUpdate();
+                                },
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                              ),
+                              const SizedBox(height: 4),
+                              Icon(
+                                Icons.drag_indicator_rounded,
+                                color: _isReordering ? Colors.amber : Colors.white24,
+                                size: 18,
+                              ),
+                              const SizedBox(height: 4),
+                            ],
                           ),
+                          const SizedBox(width: 8),
                         ],
                       ),
                     );
@@ -3274,9 +3334,22 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     );
                   },
                 ),
-                TextButton(
-                  onPressed: () => _addExDialog(dayIdx),
-                  child: const Text("+ AGGIUNGI ESERCIZIO"),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12, 4, 12, 12),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      onPressed: () => _addExDialog(dayIdx),
+                      icon: const Icon(Icons.add_rounded, size: 18),
+                      label: const Text('Aggiungi esercizio'),
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.amber,
+                        side: const BorderSide(color: Colors.amber, width: 1),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                      ),
+                    ),
+                  ),
                 ),
                 const Divider(height: 1, color: Colors.white10),
                 // Azioni sessione
@@ -3565,6 +3638,13 @@ class _ClientDetailViewState extends State<ClientDetailView>
       ),
     );
   }
+
+  Widget _noGifPlaceholder() => Container(
+    width: 70,
+    height: 70,
+    color: Colors.white10,
+    child: const Icon(Icons.fitness_center_rounded, color: Colors.white24, size: 28),
+  );
 
   void _addExDialog(int dayIdx, {int? editIndex}) {
     ExerciseConfig? ex = editIndex != null
@@ -5076,7 +5156,9 @@ class MultiLineChartPainter extends CustomPainter {
         ..strokeCap = StrokeCap.round;
 
       final path = Path();
+      final fillPath = Path();
       bool first = true;
+      double lastX = 0;
       final double xScale =
           size.width / (logs.length > 1 ? logs.length - 1 : 1);
 
@@ -5091,11 +5173,29 @@ class MultiLineChartPainter extends CustomPainter {
           double y = size.height * (1.0 - sNorm);
           if (first) {
             path.moveTo(x, y);
+            fillPath.moveTo(x, size.height);
+            fillPath.lineTo(x, y);
             first = false;
-          } else
+          } else {
             path.lineTo(x, y);
+            fillPath.lineTo(x, y);
+          }
+          lastX = x;
           canvas.drawCircle(Offset(x, y), 3, Paint()..color = color);
         }
+      }
+      if (!first) {
+        fillPath.lineTo(lastX, size.height);
+        fillPath.close();
+        canvas.drawPath(
+          fillPath,
+          Paint()
+            ..shader = LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [color.withAlpha(40), color.withAlpha(0)],
+            ).createShader(Rect.fromLTWH(0, 0, size.width, size.height)),
+        );
       }
       canvas.drawPath(path, paint);
     }
