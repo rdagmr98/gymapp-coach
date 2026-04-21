@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "df07e0f7ade8df3de59b083ff30dcec6",
-"assets/AssetManifest.bin.json": "e6d68bb50a957f6a3c49cca56fd0987f",
+const RESOURCES = {"assets/AssetManifest.bin": "f3f3ad875bf176ba0cfb046f8ada7240",
+"assets/AssetManifest.bin.json": "e26c469586f53b160aaf9beae25180c3",
 "assets/assets/gif/1-2-stick-drill.webp": "491c44df296fa2ad7cc557132d6465c8",
 "assets/assets/gif/4-point-tummy-vacuum-exercise.webp": "02be16e52776cb03287159ed1d4a2f49",
 "assets/assets/gif/45-degree-incline-row.webp": "29148478ea01743a6329d2cf4d1cef0e",
@@ -1353,7 +1353,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "df07e0f7ade8df3de59b083ff30dcec6
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "6f20a9e22bf6613088f4af4daba4a330",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "99e276d4d043103a1f5785fb8da81507",
+"flutter_bootstrap.js": "0c97d3e5d2400354b0a96059c8a9766a",
 "gymcoachpro-favicon.png": "af43c4a9c98db8b315cbe1528e1c6659",
 "icons/gymcoachpro-home-180.png": "fa3635236b540a9ed88385ddd10e502e",
 "icons/gymcoachpro-icon-192.png": "8cfc30b1b6ebd0b585e2bcf086500fe2",
@@ -1362,8 +1362,8 @@ const RESOURCES = {"assets/AssetManifest.bin": "df07e0f7ade8df3de59b083ff30dcec6
 "icons/gymcoachpro-maskable-512.png": "11a5d4ba14ef300cd3858353d6ac05f4",
 "icons/Icon-192.png": "6f20a9e22bf6613088f4af4daba4a330",
 "icons/Icon-512.png": "6f20a9e22bf6613088f4af4daba4a330",
-"index.html": "ed143435c1707717e8884445f400549c",
-"/": "ed143435c1707717e8884445f400549c",
+"index.html": "d0569b524045954f7efbbc522283a8b0",
+"/": "d0569b524045954f7efbbc522283a8b0",
 "main.dart.js": "3eca597600a98036392ab9f8131a3077",
 "manifest.json": "73ae36c0ed62b9003751bd604baa2d7b",
 "version.json": "bdc8d5fcecd59b897b87241c0a8ab4c4"};
