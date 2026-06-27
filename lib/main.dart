@@ -1891,8 +1891,8 @@ final List<Map<String, dynamic>> kWorkoutTemplates = [
     'days': [
       {
         'dayName': '1/4',
-        'bodyParts': [],
-        'muscleImage': null,
+        'bodyParts': ['dorso'],
+        'muscleImage': 'pull.png',
         'exercises': [
           {
             'name': 'Seated Row Machine',
@@ -1975,8 +1975,8 @@ final List<Map<String, dynamic>> kWorkoutTemplates = [
       },
       {
         'dayName': '2/4',
-        'bodyParts': [],
-        'muscleImage': null,
+        'bodyParts': ['glutei'],
+        'muscleImage': 'glutei.png',
         'exercises': [
           {
             'name': 'Squat con Bilanciere',
@@ -2048,8 +2048,8 @@ final List<Map<String, dynamic>> kWorkoutTemplates = [
       },
       {
         'dayName': '3/4',
-        'bodyParts': [],
-        'muscleImage': null,
+        'bodyParts': ['petto'],
+        'muscleImage': 'push.png',
         'exercises': [
           {
             'name': 'Distensioni con Manubri',
@@ -2121,8 +2121,8 @@ final List<Map<String, dynamic>> kWorkoutTemplates = [
       },
       {
         'dayName': '4/4',
-        'bodyParts': [],
-        'muscleImage': null,
+        'bodyParts': ['gambe'],
+        'muscleImage': 'gambe.png',
         'exercises': [
           {
             'name': 'Dumbbell Goblet Squat',
@@ -2863,6 +2863,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
   final _appLinks = AppLinks();
   StreamSubscription<Uri>? _linkSubscription;
   late final AnimationController _wiggleCtrl;
+  late final TabController _tabController;
   bool _isReordering = false;
 
   @override
@@ -2872,6 +2873,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
       vsync: this,
       duration: const Duration(milliseconds: 180),
     );
+    _tabController = TabController(length: 2, vsync: this);
     _initDeepLinks(); // <--- Fondamentale per ricevere i progressi!
   }
 
@@ -2885,6 +2887,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
   void dispose() {
     _linkSubscription?.cancel();
     _wiggleCtrl.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -2937,6 +2940,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
             backgroundColor: Colors.green,
           ),
         );
+        _tabController.animateTo(1);
       }
     } catch (e) {
       debugPrint("Errore ricezione progressi: $e");
@@ -3030,19 +3034,20 @@ class _ClientDetailViewState extends State<ClientDetailView>
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.client.name.toUpperCase()),
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: "PROTOCOLLO"),
-              Tab(text: "PROGRESSI"),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.client.name.toUpperCase()),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: const [
+            Tab(text: "PROTOCOLLO"),
+            Tab(text: "PROGRESSI"),
+          ],
         ),
-        body: TabBarView(children: [_buildRoutineList(), _buildAnalytics()]),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: [_buildRoutineList(), _buildAnalytics()],
       ),
     );
   }
@@ -4771,6 +4776,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
             backgroundColor: Colors.green,
           ),
         );
+        _tabController.animateTo(1);
       }
     } catch (e) {
       if (mounted) _mostraErroreImportazione(e.toString());
@@ -4858,6 +4864,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     backgroundColor: Colors.green,
                   ),
                 );
+                _tabController.animateTo(1);
               } catch (e) {
                 _mostraErroreImportazione(e.toString());
               }
