@@ -4207,81 +4207,89 @@ class _ClientDetailViewState extends State<ClientDetailView>
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      builder: (c) => Container(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Text(
-                  'Scegli un template',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.amber,
+      builder: (c) => SizedBox(
+        height: MediaQuery.of(c).size.height * 0.75,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  const Text(
+                    'Scegli un template',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.amber,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.close, color: Colors.white38),
-                  onPressed: () => Navigator.pop(c),
-                ),
-              ],
-            ),
-            const Text(
-              'Carica una scheda pre-impostata come punto di partenza. '
-              'Puoi modificarla dopo il caricamento.',
-              style: TextStyle(color: Colors.white38, fontSize: 12),
-            ),
-            const SizedBox(height: 16),
-            ...kAllWorkoutTemplates.map(
-              (t) => ListTile(
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 4,
-                ),
-                leading: Container(
-                  width: 44,
-                  height: 44,
-                  decoration: BoxDecoration(
-                    color: Colors.amber.withAlpha(20),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.amber.withAlpha(60)),
+                  const Spacer(),
+                  IconButton(
+                    icon: const Icon(Icons.close, color: Colors.white38),
+                    onPressed: () => Navigator.pop(c),
                   ),
-                  alignment: Alignment.center,
-                  child: Text(
-                    t['icon'] as String,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ),
-                title: Text(
-                  t['name'] as String,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                subtitle: Text(
-                  t['desc'] as String,
-                  style: const TextStyle(color: Colors.white38, fontSize: 12),
-                ),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios,
-                  size: 14,
-                  color: Colors.white24,
-                ),
-                onTap: () {
-                  Navigator.pop(c);
-                  _confermaCaricaTemplate(t);
-                },
+                ],
               ),
-            ),
-            const SizedBox(height: 12),
-          ],
+              const Text(
+                'Carica una scheda pre-impostata come punto di partenza. '
+                'Puoi modificarla dopo il caricamento.',
+                style: TextStyle(color: Colors.white38, fontSize: 12),
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: ListView(
+                  children: [
+                    ...kAllWorkoutTemplates.map(
+                      (t) => ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        leading: Container(
+                          width: 44,
+                          height: 44,
+                          decoration: BoxDecoration(
+                            color: Colors.amber.withAlpha(20),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(color: Colors.amber.withAlpha(60)),
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            t['icon'] as String,
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        title: Text(
+                          t['name'] as String,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        subtitle: Text(
+                          t['desc'] as String,
+                          style: const TextStyle(color: Colors.white38, fontSize: 12),
+                        ),
+                        trailing: const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 14,
+                          color: Colors.white24,
+                        ),
+                        onTap: () {
+                          Navigator.pop(c);
+                          _confermaCaricaTemplate(t);
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -5237,11 +5245,10 @@ class _GifPickerSheetState extends State<_GifPickerSheet> {
     final query = q.toLowerCase().trim();
     setState(() {
       if (query.isEmpty) {
-        _results = kGifCatalog.take(60).toList();
+        _results = kGifCatalog.toList();
       } else {
         _results = kGifCatalog
             .where((e) => e.name.toLowerCase().contains(query))
-            .take(80)
             .toList();
       }
     });
