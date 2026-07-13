@@ -81,18 +81,27 @@ final RegExp _kOtherEquipmentKeywords = RegExp(
   caseSensitive: false,
 );
 
+final RegExp _kBodyweightKeywords = RegExp(
+  r'\b(push[ -]?up|pull[ -]?up|chin[ -]?up|sit[ -]?up|v[ -]?up|l[ -]?sit|plank|burpee|crunch|mountain climber|jumping jack|jump rope|box jump|broad jump|bear crawl|superman|bodyweight|air squat|pistol squat|glute bridge|wall sit|side plank|flutter kick|leg raise|hollow hold|inchworm|high knees|star jump|dip)\b',
+  caseSensitive: false,
+);
+
 /// Classifica l'attrezzo necessario in base al nome esercizio: 'corpo_libero',
-/// 'manubri', 'bilanciere', oppure null (altro attrezzo non filtrabile qui,
-/// es. cavi/macchinari/kettlebell).
+/// 'manubri', 'bilanciere', oppure null (attrezzo diverso o non riconoscibile
+/// dal nome, es. cavi/macchinari/kettlebell/esercizi generici senza attrezzo
+/// citato esplicitamente).
 /// ponytail: euristica su name/nameEn, nessun campo equipment nei dati sorgente
-/// (ExerciseDB lo aveva ma non è stato portato nel catalogo generato). Falsi
-/// negativi noti su nomi generici che non citano l'attrezzo (es. "Leg Press").
+/// (ExerciseDB lo aveva ma non è stato portato nel catalogo generato). Il
+/// default per gli esercizi non riconosciuti è null (non filtrabile) e non
+/// 'corpo_libero', per non mostrare esercizi con manubri/bilanciere sotto il
+/// filtro "corpo libero" solo perché il nome non li cita esplicitamente.
 String? exerciseEquipment(ExerciseInfo e) {
   final text = '${e.name} ${e.nameEn}'.toLowerCase();
   if (text.contains('dumbbell')) return 'manubri';
   if (text.contains('barbell')) return 'bilanciere';
   if (_kOtherEquipmentKeywords.hasMatch(text)) return null;
-  return 'corpo_libero';
+  if (_kBodyweightKeywords.hasMatch(text)) return 'corpo_libero';
+  return null;
 }
 
 const List<ExerciseInfo> kExerciseCatalog = [

@@ -5024,6 +5024,16 @@ class _ClientDetailViewState extends State<ClientDetailView>
                   onChanged: (v) => setA(() => searchQuery = v),
                 ),
                 const SizedBox(height: 10),
+                const Text(
+                  'GRUPPO MUSCOLARE',
+                  style: TextStyle(
+                    color: Colors.white38,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                const SizedBox(height: 4),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -5043,7 +5053,17 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     ],
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
+                const Text(
+                  'ATTREZZO',
+                  style: TextStyle(
+                    color: Colors.white38,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                const SizedBox(height: 4),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(

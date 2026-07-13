@@ -18,5 +18,8 @@ void main() {
     expect(exerciseEquipment(_ex('Alternate Dumbbell Bench Press')), 'manubri');
     expect(exerciseEquipment(_ex('Barbell Curl')), 'bilanciere');
     expect(exerciseEquipment(_ex('Cable Crossover')), null);
+    expect(exerciseEquipment(_ex('Leg Press')), null);
+    expect(exerciseEquipment(_ex('45 Degree Incline Row')), null);
+    expect(exerciseEquipment(_ex('Burpee')), 'corpo_libero');
   });
 }
