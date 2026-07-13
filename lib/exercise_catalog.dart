@@ -76,6 +76,25 @@ ExerciseInfo? findExercise(String name) {
   return null;
 }
 
+final RegExp _kOtherEquipmentKeywords = RegExp(
+  r'\b(cable|machine|kettlebell|band|smith|ez[ -]?bar|trap bar|hex bar|plate|medicine ball|stability ball|swiss ball|bosu|trx|suspension|sled|landmine|leverage|weighted|pulley)\b',
+  caseSensitive: false,
+);
+
+/// Classifica l'attrezzo necessario in base al nome esercizio: 'corpo_libero',
+/// 'manubri', 'bilanciere', oppure null (altro attrezzo non filtrabile qui,
+/// es. cavi/macchinari/kettlebell).
+/// ponytail: euristica su name/nameEn, nessun campo equipment nei dati sorgente
+/// (ExerciseDB lo aveva ma non è stato portato nel catalogo generato). Falsi
+/// negativi noti su nomi generici che non citano l'attrezzo (es. "Leg Press").
+String? exerciseEquipment(ExerciseInfo e) {
+  final text = '${e.name} ${e.nameEn}'.toLowerCase();
+  if (text.contains('dumbbell')) return 'manubri';
+  if (text.contains('barbell')) return 'bilanciere';
+  if (_kOtherEquipmentKeywords.hasMatch(text)) return null;
+  return 'corpo_libero';
+}
+
 const List<ExerciseInfo> kExerciseCatalog = [
   // ── PETTO ──
   ExerciseInfo(

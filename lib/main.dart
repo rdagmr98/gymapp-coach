@@ -4932,6 +4932,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
     Function(ExerciseInfo) onSelect,
   ) {
     String? selectedCategory;
+    String? selectedEquipment;
     String searchQuery = '';
 
     const Map<String, String> muscleIcons = {
@@ -4946,6 +4947,12 @@ class _ClientDetailViewState extends State<ClientDetailView>
       'altro': '⚡',
     };
 
+    final Map<String, ExerciseInfo> archiveByName = {};
+    for (final e in [...kExerciseCatalog, ...kGifCatalog]) {
+      archiveByName.putIfAbsent(e.name.toLowerCase(), () => e);
+    }
+    final List<ExerciseInfo> archiveAll = archiveByName.values.toList();
+
     showModalBottomSheet(
       context: context,
       backgroundColor: const Color(0xFF1C1C1E),
@@ -4956,18 +4963,22 @@ class _ClientDetailViewState extends State<ClientDetailView>
       builder: (c) => StatefulBuilder(
         builder: (ctx, setA) {
           final cats =
-              kGifCatalog
+              archiveAll
                   .map((e) => e.category)
                   .toSet()
-                  .where((c) => c.isNotEmpty && c != 'altro')
+                  .where((c) => c.isNotEmpty)
                   .toList()
                 ..sort();
 
           List<ExerciseInfo> filtered = selectedCategory != null
-              ? kGifCatalog
-                    .where((e) => e.category == selectedCategory)
-                    .toList()
-              : kGifCatalog.where((e) => e.category != 'altro').toList();
+              ? archiveAll.where((e) => e.category == selectedCategory).toList()
+              : archiveAll;
+
+          if (selectedEquipment != null) {
+            filtered = filtered
+                .where((e) => exerciseEquipment(e) == selectedEquipment)
+                .toList();
+          }
 
           if (searchQuery.isNotEmpty) {
             final q = searchQuery.toLowerCase();
@@ -5027,6 +5038,38 @@ class _ClientDetailViewState extends State<ClientDetailView>
                           label: '${muscleIcons[cat] ?? '⚡'} $cat',
                           selected: selectedCategory == cat,
                           onTap: () => setA(() => selectedCategory = cat),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      _ptArchiveChip(
+                        label: '🤸 Corpo libero',
+                        selected: selectedEquipment == 'corpo_libero',
+                        onTap: () => setA(
+                          () => selectedEquipment =
+                              selectedEquipment == 'corpo_libero' ? null : 'corpo_libero',
+                        ),
+                      ),
+                      _ptArchiveChip(
+                        label: '🏋️ Manubri',
+                        selected: selectedEquipment == 'manubri',
+                        onTap: () => setA(
+                          () => selectedEquipment =
+                              selectedEquipment == 'manubri' ? null : 'manubri',
+                        ),
+                      ),
+                      _ptArchiveChip(
+                        label: '🏋️‍♂️ Bilanciere',
+                        selected: selectedEquipment == 'bilanciere',
+                        onTap: () => setA(
+                          () => selectedEquipment =
+                              selectedEquipment == 'bilanciere' ? null : 'bilanciere',
                         ),
                       ),
                     ],
