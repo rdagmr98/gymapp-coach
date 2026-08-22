@@ -2647,6 +2647,15 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
             children: [
               IconButton(
                 icon: const Icon(
+                  Icons.copy_outlined,
+                  color: Colors.white38,
+                  size: 20,
+                ),
+                tooltip: "Duplica scheda",
+                onPressed: () => _duplicateClient(i),
+              ),
+              IconButton(
+                icon: const Icon(
                   Icons.edit_outlined,
                   color: Colors.white38,
                   size: 20,
@@ -2701,6 +2710,41 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
               }
             },
             child: const Text("SALVA"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ponytail: deep-clone via JSON roundtrip — same path as persist
+  void _duplicateClient(int index) {
+    final ctrl = TextEditingController(text: "${clients[index].name} (copia)");
+    showDialog(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text("Duplica scheda"),
+        content: TextField(
+          controller: ctrl,
+          autofocus: true,
+          decoration: const InputDecoration(labelText: "Nome nuovo cliente"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c),
+            child: const Text("ANNULLA"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              final name = ctrl.text.trim();
+              if (name.isEmpty) return;
+              final copy = Client.fromJson(clients[index].toJson());
+              copy.id = DateTime.now().toString();
+              copy.name = name;
+              setState(() => clients.add(copy));
+              _saveData();
+              Navigator.pop(c);
+            },
+            child: const Text("DUPLICA"),
           ),
         ],
       ),
