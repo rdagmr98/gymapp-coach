@@ -12,12 +12,14 @@ import 'package:app_links/app_links.dart';
 import 'package:file_picker/file_picker.dart';
 import 'exercise_catalog.dart';
 import 'gif_exercise_catalog.dart';
+import 'ads_service.dart';
 
 // MethodChannel per condivisione nativa e lettura file
 const _gymFileChannel = MethodChannel('gym_file_reader');
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initGymAds();
   runApp(const GymCoachApp());
 }
 
@@ -2635,7 +2637,10 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("COACH DASHBOARD")),
-      body: ListView.builder(
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
         itemCount: clients.length,
         itemBuilder: (ctx, i) => ListTile(
           title: Text(
@@ -2677,6 +2682,10 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
             ),
           ),
         ),
+      ),
+          ),
+          const Center(child: GymBannerAd()),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _addClient,
