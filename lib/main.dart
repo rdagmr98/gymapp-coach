@@ -4962,7 +4962,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            "File .workout pronto! Codice anche copiato negli appunti.",
+            "Scheda pronta: il file .workout si apre con GymApp o Gym Logbook. Codice copiato anche negli appunti (in GymApp: Template > Incolla codice).",
           ),
           backgroundColor: Colors.green,
         ),
