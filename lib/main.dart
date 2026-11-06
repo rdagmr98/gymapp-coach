@@ -2635,12 +2635,37 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("COACH DASHBOARD")),
-      body: ListView.builder(
+      body: clients.isEmpty
+          ? const Center(
+              child: Text(
+                "Nessun atleta.\nTocca + per aggiungerne uno.",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white38),
+              ),
+            )
+          : ListView.builder(
+        // spazio sotto per il FAB, che altrimenti copre l'ultimo atleta
+        padding: const EdgeInsets.only(top: 4, bottom: 96),
         itemCount: clients.length,
         itemBuilder: (ctx, i) => ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Theme.of(ctx).colorScheme.primary.withAlpha(40),
+            foregroundColor: Theme.of(ctx).colorScheme.primary,
+            child: Text(
+              clients[i].name.trim().isEmpty ? '?' : clients[i].name.trim()[0].toUpperCase(),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
           title: Text(
             clients[i].name,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          subtitle: Text(
+            clients[i].routine.isEmpty
+                ? "Nessuna scheda"
+                : "${clients[i].routine.length} ${clients[i].routine.length == 1 ? 'sessione' : 'sessioni'}",
+            style: const TextStyle(color: Colors.white38, fontSize: 12),
           ),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
