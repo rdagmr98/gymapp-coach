@@ -163,89 +163,6 @@ class _AuthGuardPTState extends State<AuthGuardPT> {
   }
 }
 
-// --- RICERCA ITALIANA ---
-const Map<String, List<String>> kItalianKeywords = {
-  'panca': ['bench'],
-  'petto': ['chest', 'pec', 'bench', 'fly', 'push'],
-  'dorsale': ['lat', 'pulldown', 'pull', 'row'],
-  'rematore': ['row'],
-  'tirate': ['pulldown', 'pull'],
-  'bicipite': ['curl', 'bicep'],
-  'tricipite': ['tricep', 'extension', 'pushdown', 'dip'],
-  'spalla': ['shoulder', 'press', 'raise', 'delt', 'arnold'],
-  'squat': ['squat'],
-  'affondi': ['lunge'],
-  'stacco': ['deadlift'],
-  'curl': ['curl'],
-  'croci': ['fly', 'flye', 'crossover'],
-  'pressa': ['press', 'leg press'],
-  'gambe': ['leg', 'squat', 'lunge'],
-  'glutei': ['glute', 'hip', 'bridge'],
-  'addome': ['ab', 'crunch', 'plank', 'core'],
-  'plank': ['plank'],
-  'polpaccio': ['calf', 'raise'],
-  'pull': ['pull', 'pulldown', 'pullup'],
-  'push': ['push', 'press'],
-  'dip': ['dip'],
-  'manubri': ['dumbbell'],
-  'bilanciere': ['barbell'],
-  'cavo': ['cable'],
-  'corda': ['rope'],
-  'kettlebell': ['kettlebell'],
-  'alzate': ['raise', 'lateral', 'front'],
-  'lat': ['lat', 'pulldown'],
-  'lombari': ['back extension', 'hyperextension', 'deadlift'],
-  'adduttori': ['adductor'],
-  'abduttori': ['abductor'],
-};
-
-List<ExerciseInfo> searchExercisesWithItalian(String query, {int limit = 8}) {
-  if (query.length < 2) return [];
-  final q = query.toLowerCase().trim();
-  final results = <ExerciseInfo>[];
-  final seen = <String>{};
-
-  void tryAdd(ExerciseInfo ex) {
-    if (seen.add(ex.name) && results.length < limit) results.add(ex);
-  }
-
-  // 1. Match diretto nel catalogo italiano (kExerciseCatalog) — nomi IT come "Trazioni"
-  for (final ex in kExerciseCatalog) {
-    if (ex.name.toLowerCase().contains(q) ||
-        ex.nameEn.toLowerCase().contains(q) ||
-        ex.aliases.any((a) => a.toLowerCase().contains(q))) {
-      tryAdd(ex);
-    }
-  }
-
-  // 2. Match diretto nel catalogo GIF (nomi EN)
-  for (final ex in kGifCatalog) {
-    if (ex.name.toLowerCase().contains(q) ||
-        ex.nameEn.toLowerCase().contains(q)) {
-      tryAdd(ex);
-    }
-  }
-
-  // 3. Match tramite parole chiave italiane → inglese
-  if (results.length < limit) {
-    for (final entry in kItalianKeywords.entries) {
-      if (entry.key.contains(q) || q.contains(entry.key)) {
-        for (final eng in entry.value) {
-          for (final ex in kGifCatalog) {
-            if (ex.name.toLowerCase().contains(eng) ||
-                ex.nameEn.toLowerCase().contains(eng)) {
-              tryAdd(ex);
-              if (results.length >= limit) return results;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  return results;
-}
-
 ExerciseInfo? resolveTemplateExerciseInfo(String rawName) {
   final cleaned = rawName.trim();
   final direct = findAnyExercise(cleaned);
@@ -1989,10 +1906,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     optionsBuilder: (textEditingValue) {
                       if (textEditingValue.text.isEmpty)
                         return const Iterable<ExerciseInfo>.empty();
-                      return searchExercisesWithItalian(
-                        textEditingValue.text,
-                        limit: 8,
-                      );
+                      return searchExercises(textEditingValue.text, limit: 8);
                     },
                     displayStringForOption: (e) => e.name,
                     onSelected: (e) {
@@ -3338,11 +3252,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
     String? selectedEquipment;
     String searchQuery = '';
 
-    final Map<String, ExerciseInfo> archiveByName = {};
-    for (final e in [...kExerciseCatalog, ...kGifCatalog]) {
-      archiveByName.putIfAbsent(e.name.toLowerCase(), () => e);
-    }
-    final List<ExerciseInfo> archiveAll = archiveByName.values.toList();
+    final List<ExerciseInfo> archiveAll = kAllExercises;
 
     showModalBottomSheet(
       context: context,
@@ -3371,11 +3281,8 @@ class _ClientDetailViewState extends State<ClientDetailView>
                 .toList();
           }
 
-          if (searchQuery.isNotEmpty) {
-            final q = searchQuery.toLowerCase();
-            filtered = filtered
-                .where((e) => e.name.toLowerCase().contains(q))
-                .toList();
+          if (searchQuery.trim().length >= 2) {
+            filtered = searchExercises(searchQuery, pool: filtered);
           }
 
           return Container(
@@ -3728,15 +3635,10 @@ class _GifPickerSheetState extends State<_GifPickerSheet> {
   }
 
   void _filter(String q) {
-    final query = q.toLowerCase().trim();
     setState(() {
-      if (query.isEmpty) {
-        _results = kGifCatalog.toList();
-      } else {
-        _results = kGifCatalog
-            .where((e) => e.name.toLowerCase().contains(query))
-            .toList();
-      }
+      _results = q.trim().length < 2
+          ? kGifCatalog.toList()
+          : searchExercises(q, pool: kGifCatalog);
     });
   }
 
