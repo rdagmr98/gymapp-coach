@@ -107,7 +107,7 @@ const _ex_ = <String, (String, String, String, String)>{
   'stepUp': ('Step Up', 'step_up', 'Spingi con la gamba sul rialzo, non aiutarti con quella a terra. Ripetizioni per gamba', 'Drive with the leg on the box, don\'t push off the floor leg. Reps per leg'),
   // core
   'plank': ('Plank', 'plank', 'Corpo in linea, glutei e addome contratti. I numeri sono secondi', 'Body in a straight line, glutes and abs tight. Numbers are seconds'),
-  'plankLat': ('Plank Laterale', 'plank_laterale', 'Fianchi alti e corpo in linea. Secondi per lato', 'Hips high, body straight. Seconds per side'),
+  'plankLat': ('Plank Laterale', 'side-bridge', 'Fianchi alti e corpo in linea. Secondi per lato', 'Hips high, body straight. Seconds per side'),
   'crunch': ('Crunch', 'crunch', 'Stacca solo le scapole, espira salendo', 'Lift only the shoulder blades, exhale on the way up'),
   'crunchCavo': ('Kneeling Cable Crunch', 'kneeling-cable-crunch', 'Arrotola il busto portando i gomiti alle cosce, anche ferme', 'Curl the torso bringing the elbows to the thighs, hips still'),
   'legRaise': ('Leg Raise', 'hanging-leg-raises', 'Niente slancio, porta su il bacino e non solo le gambe', 'No swinging, curl the pelvis up, not just the legs'),

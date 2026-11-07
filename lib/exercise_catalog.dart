@@ -203,7 +203,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
     tips:
         'Più sei inclinato in avanti, più lavora il petto. Più sei dritto, più lavorano i tricipiti.',
     aliases: ['Dip', 'Parallele', 'Dips petto'],
-    gifFilename: 'triceps-dips',
+    gifFilename: 'chest-dips',
   ),
   // ── DORSO ──
   ExerciseInfo(
@@ -395,7 +395,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
         'Sdraiato, bilanciere o manubri sopra il petto. Abbassa lentamente verso la fronte flettendo solo i gomiti. Estendi le braccia.',
     tips: 'Controlla la discesa. Non allargare i gomiti.',
     aliases: ['Skull crusher', 'French press bilanciere', 'Estensioni tricipiti sdraiato'],
-    gifFilename: 'seated-ez-bar-overhead-triceps-extension',
+    gifFilename: 'lying-barbell-triceps-extension',
   ),
   ExerciseInfo(
     name: 'Tricipiti ai Cavi',
@@ -669,7 +669,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
         'Seduto nella macchina, avambracci sulle leve o mani sulle maniglie. Porta le braccia verso il centro contraendo il petto. Torna lentamente alla posizione di partenza.',
     tips:
         'Ottimo per l\'isolamento del petto. Non usare un peso eccessivo che ti costringa ad aprire troppo i gomiti.',
-    aliases: ['Butterfly', 'Pec deck', 'Croci alla macchina'],
+    aliases: ['Butterfly', 'Pec deck', 'Pectoral machine', 'Croci alla macchina'],
     gifFilename: 'pec-deck-fly',
   ),
   ExerciseInfo(
@@ -697,7 +697,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
         'Seduto nella macchina, schiena contro lo schienale. Spingi le maniglie in avanti estendendo le braccia. Riporta lentamente.',
     tips:
         'Perfetto per principianti e per isolare il petto con traiettoria guidata.',
-    aliases: ['Pectoral machine', 'Chest press'],
+    aliases: ['Chest press'],
     gifFilename: 'chest-press-machine',
   ),
   // ── DORSO (extra) ──
@@ -931,6 +931,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
         'Con manubri o bilanciere, metti un piede su una panca o gradino. Spingi verso l\'alto portando l\'altro piede sulla panca. Scendi controllato. Alterna le gambe.',
     tips:
         'Più alto è il gradino, più lavora il gluteo. Spingi con il tallone per massimizzare l\'attivazione glutea.',
+    gifFilename: 'dumbbell-step-up',
   ),
   // ── CORE (extra) ──
   ExerciseInfo(
@@ -945,6 +946,7 @@ const List<ExerciseInfo> kExerciseCatalog = [
     tips:
         'Non lasciare cadere i fianchi. Il corpo deve formare una linea retta dalla testa ai piedi.',
     aliases: ['Side plank'],
+    gifFilename: 'side-bridge',
   ),
   ExerciseInfo(
     name: 'Mountain Climber',
