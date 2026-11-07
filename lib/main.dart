@@ -12,6 +12,7 @@ import 'package:app_links/app_links.dart';
 import 'package:file_picker/file_picker.dart';
 import 'exercise_catalog.dart';
 import 'gif_exercise_catalog.dart';
+import 'workout_templates.dart';
 
 // MethodChannel per condivisione nativa e lettura file
 const _gymFileChannel = MethodChannel('gym_file_reader');
@@ -360,18 +361,17 @@ class WorkoutDay {
   );
 }
 
-const Map<String, String> kBodyPartIcons = {
-  'nessuno': '',
-  'petto': '🦍',
-  'schiena': '🔙',
-  'gambe': '🦵',
-  'spalle': '🏋️',
-  'braccia': '💪',
-  'core': '🔥',
-  'full_body': '🏃',
-  'cardio': '❤️',
-  'glutei': '🍑',
-  'altro': '⚡',
+const Map<String, IconData> kBodyPartIcons = {
+  'petto': Icons.fitness_center_rounded,
+  'schiena': Icons.rowing_rounded,
+  'gambe': Icons.directions_walk_rounded,
+  'spalle': Icons.accessibility_new_rounded,
+  'braccia': Icons.sports_gymnastics_rounded,
+  'core': Icons.self_improvement_rounded,
+  'full_body': Icons.accessibility_new_rounded,
+  'cardio': Icons.favorite_border_rounded,
+  'glutei': Icons.directions_run_rounded,
+  'altro': Icons.bolt_rounded,
 };
 const Map<String, String> kBodyPartNames = {
   'nessuno': 'Nessuna',
@@ -402,1823 +402,6 @@ const List<Map<String, String>> kMuscleImages = [
   {'file': 'pull.png', 'label': 'Pull'},
 ];
 
-// --- TEMPLATE SCHEDE PRE-IMPOSTATE ---
-final List<Map<String, dynamic>> kWorkoutTemplates = [
-  {
-    'name': 'Gianmarco Power Builder',
-    'desc': '5 giorni · petto, dorso, gambe, spalle, braccia',
-    'icon': '🏋️',
-    'days': [
-      {
-        'dayName': 'Petto',
-        'bodyParts': ['petto'],
-        'muscleImage': 'petto.png',
-        'exercises': [
-          {
-            'name': 'Smith Machine Bench Press',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'Utilizzare Multipower',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'smith-machine-bench-press',
-          },
-          {
-            'name': 'High Cable Crossover',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'high-cable-crossover',
-          },
-          {
-            'name': 'Distensioni con Manubri',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'alternate-dumbbell-bench-press',
-          },
-          {
-            'name': 'Peck Deck',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pec-deck-fly',
-          },
-        ],
-      },
-      {
-        'dayName': 'Dorso',
-        'bodyParts': ['schiena'],
-        'muscleImage': 'dorso.png',
-        'exercises': [
-          {
-            'name': 'Lat Machine',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lat-pulldown',
-          },
-          {
-            'name': 'Seated Row Machine',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-row-machine',
-          },
-          {
-            'name': 'Pulley Basso',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-cable-row',
-          },
-          {
-            'name': 'Cable Straight Arm Pulldown',
-            'targetSets': 4,
-            'repsList': [10, 10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-straight-arm-pulldown',
-          },
-        ],
-      },
-      {
-        'dayName': 'Gambe',
-        'bodyParts': ['gambe'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Belt Squat',
-            'targetSets': 8,
-            'repsList': [8, 8, 8, 8, 8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'belt-squat',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 3,
-            'repsList': [15, 12, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Seated Leg Curl',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-leg-curl',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-        ],
-      },
-      {
-        'dayName': 'Spalle',
-        'bodyParts': ['spalle'],
-        'muscleImage': 'spalle.png',
-        'exercises': [
-          {
-            'name': 'Shoulder Press Macchina',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lever-shoulder-press',
-          },
-          {
-            'name': 'Alzate Frontali',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-front-raise',
-          },
-          {
-            'name': 'Lateral Raise Machine',
-            'targetSets': 8,
-            'repsList': [12, 10, 12, 10, 12, 10, 12, 10],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lateral-raise-machine',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 4,
-            'repsList': [10, 8, 12, 10],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-          {
-            'name': 'Alzate Posteriori',
-            'targetSets': 4,
-            'repsList': [12, 10, 10, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'bent-over-lateral-raise',
-          },
-        ],
-      },
-      {
-        'dayName': 'Braccia',
-        'bodyParts': ['braccia'],
-        'muscleImage': 'braccia.png',
-        'exercises': [
-          {
-            'name': 'Lever Preacher Curl',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lever-preacher-curl',
-          },
-          {
-            'name': 'Curl al Cavo Basso',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-curl',
-          },
-          {
-            'name': 'Curl Martello',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hammer-curl',
-          },
-          {
-            'name': 'Push Down',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'push-down',
-          },
-          {
-            'name': 'Rope Pushdown',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'rope-pushdown',
-          },
-          {
-            'name': 'French Press',
-            'targetSets': 5,
-            'repsList': [8, 8, 8, 8, 8],
-            'recoveryTime': 60,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Ivan A/B Essentials',
-    'desc': '2 giorni · upper/lower mix',
-    'icon': '🔥',
-    'days': [
-      {
-        'dayName': 'A',
-        'bodyParts': ['petto', 'dorso', 'braccia'],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Panca Piana',
-            'targetSets': 4,
-            'repsList': [12, 10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'bench-press',
-          },
-          {
-            'name': 'Peck Deck',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pec-deck-fly',
-          },
-          {
-            'name': 'Lat Machine',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lat-pulldown',
-          },
-          {
-            'name': 'Pulley Basso',
-            'targetSets': 4,
-            'repsList': [12, 10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-cable-row',
-          },
-          {
-            'name': 'Curl con Bilanciere',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-curl',
-          },
-          {
-            'name': 'Curl Martello',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hammer-curl',
-          },
-        ],
-      },
-      {
-        'dayName': 'B',
-        'bodyParts': ['gambe', 'spalle', 'braccia'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Leg Press',
-            'targetSets': 3,
-            'repsList': [15, 12, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-press',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 2,
-            'repsList': [12, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-          {
-            'name': 'Lento Avanti',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-shoulder-press',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-          {
-            'name': 'Push Down',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'push-down',
-          },
-          {
-            'name': 'Rope Pushdown',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'rope-pushdown',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Angela Push Pull Leg',
-    'desc': '3 giorni · lower focus + upper work',
-    'icon': '🌿',
-    'days': [
-      {
-        'dayName': 'Push',
-        'bodyParts': ['petto', 'dorso', 'glutei', 'braccia'],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Chest Press Macchina',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'chest-press-machine',
-          },
-          {
-            'name': 'Pulley Basso',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-cable-row',
-          },
-          {
-            'name': 'Romanian Deadlift',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'romanian-deadlift',
-          },
-          {
-            'name': 'Glute Kickback',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'glute-kickback-machine',
-          },
-          {
-            'name': 'Glute Kickback',
-            'targetSets': 4,
-            'repsList': [10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'glute-kickback-machine',
-          },
-          {
-            'name': 'Overhead Tricep Extension',
-            'targetSets': 4,
-            'repsList': [10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-        ],
-      },
-      {
-        'dayName': 'Pull',
-        'bodyParts': ['petto', 'gambe', 'braccia'],
-        'muscleImage': 'pull.png',
-        'exercises': [
-          {
-            'name': 'Knee Push Up',
-            'targetSets': 4,
-            'repsList': [18, 18, 18, 18],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'knee-push-up',
-          },
-          {
-            'name': 'Peck Deck',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pec-deck-fly',
-          },
-          {
-            'name': 'Hip Adduction Machine',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-adduction-machine',
-          },
-          {
-            'name': 'Hip Abduction Machine',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-abduction-machine',
-          },
-          {
-            'name': 'Seated Incline Dumbbell Curl',
-            'targetSets': 4,
-            'repsList': [10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-incline-dumbbell-curl',
-          },
-          {
-            'name': 'Curl Martello',
-            'targetSets': 4,
-            'repsList': [10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hammer-curl',
-          },
-        ],
-      },
-      {
-        'dayName': 'Leg',
-        'bodyParts': ['gambe', 'spalle'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Squat con Bilanciere',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'squat',
-          },
-          {
-            'name': 'Pendulum Squat',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pendulum-squat',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 3,
-            'repsList': [10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 2,
-            'repsList': [10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-          {
-            'name': 'Dumbbell Shoulder Press',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-shoulder-press',
-          },
-          {
-            'name': 'Alzate Frontali',
-            'targetSets': 3,
-            'repsList': [10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-front-raise',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 5,
-            'repsList': [12, 10, 8, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 180,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Elisa PPL Starter',
-    'desc': '3 giorni · push, pull, leg day',
-    'icon': '✨',
-    'days': [
-      {
-        'dayName': 'Pull day',
-        'bodyParts': ['dorso', 'braccia', 'gambe'],
-        'muscleImage': 'pull.png',
-        'exercises': [
-          {
-            'name': 'Seated Row Machine',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-row-machine',
-          },
-          {
-            'name': 'Cable Straight Arm Pulldown',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-straight-arm-pulldown',
-          },
-          {
-            'name': 'Curl al Cavo Basso',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-curl',
-          },
-          {
-            'name': 'Romanian Deadlift',
-            'targetSets': 4,
-            'repsList': [8, 8, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'romanian-deadlift',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-        ],
-      },
-      {
-        'dayName': 'Push day',
-        'bodyParts': ['petto', 'spalle', 'braccia'],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Chest Press Macchina',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'chest-press-machine',
-          },
-          {
-            'name': 'Croci ai Cavi',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-crossover',
-          },
-          {
-            'name': 'Rope Pushdown',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'rope-pushdown',
-          },
-          {
-            'name': 'Overhead Tricep Extension',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-          {
-            'name': 'Lento Avanti',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-shoulder-press',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 4,
-            'repsList': [15, 12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-        ],
-      },
-      {
-        'dayName': 'Leg day',
-        'bodyParts': ['gambe', 'glutei'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Leg Press',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-press',
-          },
-          {
-            'name': 'Hack Squats Machine',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hack-squats-machine',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Hip Thrust',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-hip-thrusts',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 4,
-            'repsList': [8, 8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Gaetano Strength Split',
-    'desc': '3 giorni · pull, push, legs',
-    'icon': '🧱',
-    'days': [
-      {
-        'dayName': 'Pull',
-        'bodyParts': ['braccia'],
-        'muscleImage': 'pull.png',
-        'exercises': [
-          {
-            'name': 'Seated Row Machine',
-            'targetSets': 5,
-            'repsList': [6, 8, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-row-machine',
-          },
-          {
-            'name': 'Pulley Basso',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-cable-row',
-          },
-          {
-            'name': 'Lat Machine',
-            'targetSets': 4,
-            'repsList': [10, 10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lat-pulldown',
-          },
-          {
-            'name': 'Curl con Bilanciere',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-curl',
-          },
-          {
-            'name': 'Curl al Cavo Basso',
-            'targetSets': 4,
-            'repsList': [10, 10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-curl',
-          },
-          {
-            'name': 'Cable Rope Hammer Curl',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-rope-hammer-curl',
-          },
-        ],
-      },
-      {
-        'dayName': 'Push',
-        'bodyParts': ['spalle'],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Distensioni con Manubri',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'alternate-dumbbell-bench-press',
-          },
-          {
-            'name': 'Croci ai Cavi',
-            'targetSets': 4,
-            'repsList': [10, 10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-crossover',
-          },
-          {
-            'name': 'Peck Deck',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pec-deck-fly',
-          },
-          {
-            'name': 'Lento Avanti',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-shoulder-press',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 4,
-            'repsList': [10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-          {
-            'name': 'Alzate Posteriori',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'bent-over-lateral-raise',
-          },
-        ],
-      },
-      {
-        'dayName': 'Legs',
-        'bodyParts': ['gambe'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Leg Press',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-press',
-          },
-          {
-            'name': 'Hack Squats Machine',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hack-squats-machine',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 2,
-            'repsList': [8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-          {
-            'name': 'One Arm Triceps Pushdown',
-            'targetSets': 4,
-            'repsList': [6, 8, 8, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'one-arm-triceps-pushdown',
-          },
-          {
-            'name': 'Rope Pushdown',
-            'targetSets': 4,
-            'repsList': [10, 10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'rope-pushdown',
-          },
-          {
-            'name': 'French Press',
-            'targetSets': 3,
-            'repsList': [8, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Valentina 4-Day Sculpt',
-    'desc': '4 giorni · schiena, quad, upper, glutei',
-    'icon': '🍑',
-    'days': [
-      {
-        'dayName': 'Workout 1/4',
-        'bodyParts': [],
-        'muscleImage': 'pull.png',
-        'exercises': [
-          {
-            'name': 'Lat Machine',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lat-pulldown',
-          },
-          {
-            'name': 'T Bar Row',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 't-bar-row',
-          },
-          {
-            'name': '45 Degree Incline Row',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': '45-degree-incline-row',
-          },
-          {
-            'name': 'Cable Straight Arm Pulldown',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'Se c\'è usa la vulken',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-straight-arm-pulldown',
-          },
-          {
-            'name': 'Dumbbell Kickback',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-kickback',
-          },
-          {
-            'name': 'Rope Pushdown',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'rope-pushdown',
-          },
-          {
-            'name': 'High Pulley Overhead Tricep Extension',
-            'targetSets': 2,
-            'repsList': [10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'vulken',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'high-pulley-overhead-tricep-extension',
-          },
-          {
-            'name': 'Weighted Sit Ups',
-            'targetSets': 3,
-            'repsList': [15, 15, 15],
-            'recoveryTime': 30,
-            'interExercisePause': 120,
-            'notePT': '3 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'weighted-sit-ups',
-          },
-        ],
-      },
-      {
-        'dayName': 'Workout 2/4',
-        'bodyParts': [],
-        'muscleImage': 'quadricipiti.png',
-        'exercises': [
-          {
-            'name': 'Smith Machine Squat',
-            'targetSets': 4,
-            'repsList': [10, 8, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'smith-machine-squat',
-          },
-          {
-            'name': 'Hack Squats Machine',
-            'targetSets': 4,
-            'repsList': [12, 10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hack-squats-machine',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Hip Adduction Machine',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-adduction-machine',
-          },
-          {
-            'name': 'Affondi',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'bodyweight-lunge',
-          },
-          {
-            'name': 'Calf Raises',
-            'targetSets': 4,
-            'repsList': [18, 15, 18, 15],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'calf-raise',
-          },
-          {
-            'name': 'Russian Twist',
-            'targetSets': 3,
-            'repsList': [15, 15, 15],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '3 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'russian-twist',
-          },
-        ],
-      },
-      {
-        'dayName': 'Workout 3/4',
-        'bodyParts': [],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Peck Deck',
-            'targetSets': 4,
-            'repsList': [10, 8, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'pec-deck-fly',
-          },
-          {
-            'name': 'Incline Cable Fly',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'Usa le cavigliere',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'incline-cable-fly',
-          },
-          {
-            'name': 'High Cable Crossover',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'Usa le cavigliere',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'high-cable-crossover',
-          },
-          {
-            'name': 'Alzate Frontali',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'vulken',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-front-raise',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 5,
-            'repsList': [12, 10, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-          {
-            'name': 'Crunch',
-            'targetSets': 4,
-            'repsList': [18, 18, 18, 18],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '4x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'crunch',
-          },
-        ],
-      },
-      {
-        'dayName': 'Workout 4/4',
-        'bodyParts': [],
-        'muscleImage': 'glutei.png',
-        'exercises': [
-          {
-            'name': 'Hip Thrust',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-hip-thrusts',
-          },
-          {
-            'name': 'Romanian Deadlift',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'romanian-deadlift',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 3,
-            'repsList': [10, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-          {
-            'name': 'Hip Abduction Machine',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-abduction-machine',
-          },
-          {
-            'name': 'Curl al Cavo Basso',
-            'targetSets': 4,
-            'repsList': [10, 8, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': 'Usa le cavigliere',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-curl',
-          },
-          {
-            'name': 'Cable Rope Hammer Curl',
-            'targetSets': 4,
-            'repsList': [10, 8, 8, 6],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-rope-hammer-curl',
-          },
-          {
-            'name': 'Crunch',
-            'targetSets': 3,
-            'repsList': [18, 18, 18],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '3 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'crunch',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    'name': 'Andrea 4/4 Progression',
-    'desc': '4 giorni · schiena, lower, push, legs',
-    'icon': '⚙️',
-    'days': [
-      {
-        'dayName': '1/4',
-        'bodyParts': ['dorso'],
-        'muscleImage': 'pull.png',
-        'exercises': [
-          {
-            'name': 'Seated Row Machine',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-row-machine',
-          },
-          {
-            'name': 'Lat Machine',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'lat-pulldown',
-          },
-          {
-            'name': '45 Degree Incline Row',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': '45-degree-incline-row',
-          },
-          {
-            'name': 'Cable Straight Arm Pulldown',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-straight-arm-pulldown',
-          },
-          {
-            'name': 'Push Down',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'push-down',
-          },
-          {
-            'name': 'Overhead Tricep Extension',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-          {
-            'name': 'French Press',
-            'targetSets': 2,
-            'repsList': [12, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'seated-ez-bar-overhead-triceps-extension',
-          },
-        ],
-      },
-      {
-        'dayName': '2/4',
-        'bodyParts': ['glutei'],
-        'muscleImage': 'glutei.png',
-        'exercises': [
-          {
-            'name': 'Squat con Bilanciere',
-            'targetSets': 4,
-            'repsList': [12, 12, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'squat',
-          },
-          {
-            'name': 'Hip Thrust',
-            'targetSets': 4,
-            'repsList': [12, 10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-hip-thrusts',
-          },
-          {
-            'name': 'Dumbbell Romanian Deadlift',
-            'targetSets': 4,
-            'repsList': [12, 10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-romanian-deadlift',
-          },
-          {
-            'name': 'Hip Abduction Machine',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-abduction-machine',
-          },
-          {
-            'name': 'Calf Raises',
-            'targetSets': 4,
-            'repsList': [18, 18, 15, 12],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'calf-raise',
-          },
-          {
-            'name': 'Crunch',
-            'targetSets': 3,
-            'repsList': [15, 15, 15],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '3 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'crunch',
-          },
-        ],
-      },
-      {
-        'dayName': '3/4',
-        'bodyParts': ['petto'],
-        'muscleImage': 'push.png',
-        'exercises': [
-          {
-            'name': 'Distensioni con Manubri',
-            'targetSets': 4,
-            'repsList': [12, 10, 8, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'alternate-dumbbell-bench-press',
-          },
-          {
-            'name': 'Incline Dumbbell Fly',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'incline-dumbbell-fly',
-          },
-          {
-            'name': 'Chest Press Macchina',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'chest-press-machine',
-          },
-          {
-            'name': 'Lento Avanti',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'barbell-shoulder-press',
-          },
-          {
-            'name': 'Alzate Laterali',
-            'targetSets': 4,
-            'repsList': [12, 10, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-lateral-raise',
-          },
-          {
-            'name': 'Crunch',
-            'targetSets': 4,
-            'repsList': [15, 15, 15, 15],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '4 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'crunch',
-          },
-        ],
-      },
-      {
-        'dayName': '4/4',
-        'bodyParts': ['gambe'],
-        'muscleImage': 'gambe.png',
-        'exercises': [
-          {
-            'name': 'Dumbbell Goblet Squat',
-            'targetSets': 3,
-            'repsList': [12, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-goblet-squat',
-          },
-          {
-            'name': 'Hip Abduction Machine',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'hip-abduction-machine',
-          },
-          {
-            'name': 'Leg Extension',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-extension',
-          },
-          {
-            'name': 'Leg Curl',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'leg-curl',
-          },
-          {
-            'name': 'Curl con Manubri Alternati',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'dumbbell-curl',
-          },
-          {
-            'name': 'Curl al Cavo Basso',
-            'targetSets': 3,
-            'repsList': [12, 10, 8],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-curl',
-          },
-          {
-            'name': 'Cable Rope Hammer Curl',
-            'targetSets': 2,
-            'repsList': [12, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'cable-rope-hammer-curl',
-          },
-          {
-            'name': 'Crunch',
-            'targetSets': 3,
-            'repsList': [10, 10, 10],
-            'recoveryTime': 90,
-            'interExercisePause': 120,
-            'notePT': '3 x max',
-            'noteCliente': '',
-            'supersetGroup': 0,
-            'gifFilename': 'crunch',
-          },
-        ],
-      },
-    ],
-  },
-];
-
-
 List<dynamic> _templateDays(Map<String, dynamic> template) {
   final directDays = template['days'];
   if (directDays is List) return directDays;
@@ -2243,49 +426,42 @@ final List<Map<String, dynamic>> kCuratedWorkoutTemplates = [
   {
     'name': 'Gianmarco Signature',
     'desc': '5 giorni · petto / dorso / gambe / spalle / braccia',
-    'icon': '🔥',
     'payload':
         'GYM1:H4sIAApl5WkC_81XXU_bMBT9K1ae4wnYQGxvtHxsEkwRZU9THxznklhz7Mx2KAXx33cdp12bhCJNootaVdW1Y5_j43vuzXPEpQDlvrMSoi_RlWCqZIbrKI6Mrp1QGP35HGVs2c5IwDk_mupsmTDjLI5HVROcx1FZWy7hW8lyP7cJf6hUjvPhEQwXFmyzngqLzUrhCnLDeIEbkQkoXpDEgLX4gGMmBzcDv8MnRAOVvRbW4eOncfOZ-yDXD2CWd8Iv9_kgjoRyYC7avRJWW4wfHuGA0g6SO9zzhxNSPD0xA-Smlk5UegEmChOmzVl4ZBiwdQXGgrvCg6iiL7hGLu4vhYQWvPXgaRnA09SDp1UD_iVeM_wq8oJMWSqBTI221sN9R3L_wqNAiJR7iJSvIW5QOEdgoKzQSpCSqTo1YmQMsrpMU5Cyf_wJcKcNk6SVaWTAK-A0A_6L3stl9DL3wP9m2rk2tpdpFmng0_1cy_zsXbl2zdwq00Z2CpI5WtVSZnqhNsVb-cKtXowMsQXmIKNGL1b5v3XpkAssyYTZRr8RAg_ZjvA3YQeXmjnD0BAcOTMlSVaq7GJxeBCvvntkEijYFi1lpty4Q51MumJlCt1MyptgL4-a8K48moB0xP6umeucyumQtvH-NUYndDQA3FD3GnJy8dgaeQf5x209j-PDo_2KKSGnsAbXQT2tjSQzyGo30mzy6DmCHAI-NqtdQ-2kyKxiaFq9ahOivSQJ8Z2dXaFrmYEJ7ZwvPN4m2dgE3GrhbIu530acySdUmlwarRyTYnf6vOaFJ-_f_9x7gBQt0W4VJCz94JugWz_wShOw7V6NAcS93z1ykgFzIDNUZVtNWm7irRJ1uncGa1W2qAxQSDQ22EboN_rqVoeDgQw5ecdighfK79Rl0fGPicEMF6xrIGkb7jlIO7Cz0AqO5F_p3I-Hi-0-Lyg8BKtAfPinWwCaqsXZgyAZZl460Av-fwqhh3IL3bRPngHVigrF5fqNtkepYGXZe4UdCxWjK6ABYU-QpLYF8e2hV2V8Wmg8ca-C8dcKHa9CuLT7RrTBQZuMjY5Ec_4eeRc4thecM26YEuM7-raNWymw9m1nGgfa7Ezn-PkDop31-TMTAAA',
   },
   {
     'name': 'Ivan A/B',
     'desc': '2 giorni · upper / lower',
-    'icon': '🏋️',
     'payload':
         'GYM1:H4sIAApl5WkC_82VUWvbMBDHv4rQsw1Nuo2tb03WjUG6GZq3EcJZvsXHZElIctqs7LvvZJs2c9Y-ZsYgzJ18-p3811-PUmlCE79Cg_JKftmDkZn0to1kOPD9UVZwGJLXnMEH9IoChi5n-kQBRoEoCAzwlAh-h_EOI895w7XQhRWFyB_M5tnsInufvduksLJ79Ic1pRIfLjJJJqK_GeoX0AaOz-acMDZiseZ1ZP--7IixD4TWoQ8YPzOzk1c8fUc_PpHGga1Eo-rceQxB_s6ekVH9FB95GAFf_gv4jLiOkbZV4jqCXUEUt6Dq9Eumhash5q7VurL35q_t5RgexAJCsJOTRECIWOUKSo25t_fH4MvWa6GsEQvSrGpCP7UtL8GXqHWumPSE_BZ85KSdGHMNTYN-QN4k6GdXWbzkKivciaI7t6828zbr-jmn6HF3aiiJ9uYhoglkzYh4frr9Z8bFJ7IRclLN1DyFecfivqttqyv0vSCSGSY3hImRh4ZinTe9U-dhYD7VyrX-xQ4k2NbRg6aJdVG1Tdk5jO75cg9c_ph_7UmRo0gCSCxhP7UOvHXI11Kox9fSN169RqhE6gDdiwf2fzdgB85t7Di3R8d3w88fY9uharUJAAA',
   },
   {
     'name': 'Angela 3 Day',
     'desc': '3 giorni · split personalizzata',
-    'icon': '⚡',
     'payload':
         'GYM1:H4sIAApl5WkC_82Wb2_aMBDGv0qU11gCtkms7ygr2ws6ocFeTVXlOAc54diZ_7RlVb_7ziR0WdKiVZpClAghX-z8zr7nyT3GQiIo95XnEF_EU7UFyeNBbLR3qGjox2Oc8n0VXnqbURAewAi0YA9hVcW4EjxaIldhvuNmC24Fjp55T8tBYRdoHU2YDA7XTRgU-g7Mfo1hgY_DQYzKgbmqVl9yb2l8NKaA0g6Wa3pLXP6fHaChHLC-AGPBfSboIr6gx7e4maOEiiwBJTJWGLA2fhr8AfZSwj665NbqnhFb4A5SJngigRl9X8f-pnOuaJejT8BTiRvXYH_XZu-Q3FR0LD3S1dC_YBGtM-Ntv5gzLG5diVWDXRsUWKDDiGM043d4skZGwwHdXe91AawgSab6XtXR5yZUfLQ8VHzfqFOfJwlIyeyOBMgE7XsGJn66CQnUrUbKV62GprDvxenUJoPj3WFy4TQYReo2A2JHWhW7nnlMQUi3aeBqKHSapF44bU5qtKyc0bBjmfIj29td5UzEbWOZeSMjoVV0zZVPDEZTSS9X3GF_tSqIuZXDNTeOgrp32BnPczAVdMNXFrB9zVZWPz13h5O5REndDIKBvjUGAbF-EJTOiz5_3i-qhG273wqoVw8OlEWt_kGqXQPDM1sDOhR7g3fc5O0atinIVaa9TMGUxUDSFCLDVid-3qqwObqM5TyQAbMVcbtQpvIXtb_R3GjluMSelcqzJ24CHzOcFn-BfkE_pk3_4W_6cWmOb0th8t9SkCXkMYkbun4D0U-glBEOAAA',
   },
   {
     'name': 'Elisa PPL',
     'desc': '3 giorni · pull / push / legs',
-    'icon': '💎',
     'payload':
         'GYM1:H4sIAApl5WkC_9WWwW7bMAyGX0Xw2QKabgO23lY33Q7dFjS5DUGgyExMTJY8Sm6aFX33UbFbGE2Q9ZRqsA-2RMuf6Z8_9ZBpg2DDd1VDdpGNDXqV5Rm5NqDlkZ8PWam2_eykNUbwLQfAPZBGD34XYrv5b0pX_JS4dRsOCYrWEKYQOOY9LwmNv0Ef-IGP-e6Yx0Ht7oC2M4wLfDrLM7QBaNyvPlGt5_HROU9YF2Ay47dk3XWx44ZuwLcNkIfwhcGb7ILD17i6RgM9mQcVoJTkNrLuILPH_Jn7RgXRs7_gfrfPfUJqo4JsOOel29ghb9GSEcqIQt05cam8d0lha7U0IDVDDqFvXa0sKiuuQJUGV-GfEhmd8XlCbuoJZflEONQIrEXMe2LCNrDuMz2PsMNa9dWxWi0q8EFMCLyP2o_iV2mpKALKJgIeqtmCnEahnWV62y4Jk4Iv23q5BGPkymyH1D_45RWrS8wINTRifB_AenQ2KXrXUy7CjnIBz5SDT7kmsLrqFJRm7v0v9k6piSsBaIg-rVxrSqCU5e9rDNWT8KXvibt6GH7LZ_OHW5vgFgakDB61p9GHfHQebfVNfofpECUpXn7Pr6K_HrGrOH1Iain4794_mf5ueUcRvekSjbIagdLaWPgI-LK7vc6Ldk35tH055vigBX3FRswqru-QmCoqbBahA_u_thDzx79h3fVZEQwAAA',
   },
   {
     'name': 'Gaetano PPL',
     'desc': '3 giorni · pull / push / legs',
-    'icon': '🧠',
     'payload':
         'GYM1:H4sIAApl5WkC_82Wb2-bMBDGvwry6zCl3R9tfbdmbTUp2dCSd1UUHeYKVo3NbNOUVf3uOwONUkqjvAooURTZ5vy788NzfmJcClTuF-TILtgNoAOl2YQZXTqhaOz2iSVQtfNRKSVNxjqpIjDO0jSLDXAugK0nLC8tl_gzh9QvLmjxh0Kl9AA-ouHCoq3jqSbYAnhGWwR_9JaWODApuiX6oJ9pfyzsXFhHD3yZfK0_Z9O1H-f6AU21Ej7Gt-mECeXQXLUbRFBaGj87pwmlHUYr2og1_2d1ptgM2LJAY9HdUKIFu6Dlqbi7FhJbOIvgMAmN3oZ5w8meJzt0XwesgkuwVnfYP_WwD0HOIZbo-fe55-CCtuwHsc-mk5fvCckluNCLJtFbtU89K40MuFbBpZCguECDYyt6DCZGKUNOqG_QQQYzeNBHyGWYujdS6UVf0FtOeXWpP_ZSnxA5gzxH0zKvPfW-Sdmsa1K2AHpj-zzKZoc8amY0F7X2FqDK2IixCS8p87hW3p2sXp1eDQ7CK0-M8V2vhEpbk-qgR8jvgx_0c1B0dU84IXBBQJvEU-2hLjNdygRNEBm01lur91YYXUvIhcte-lhoW-iw8ND76XyX_6h3BNQl0IA8RjanPYOd2GVDGBqg8MdnMLhtvZdAx8HmmNqug6WQxz0GVg8fcjCK1ahzbKKUmL5V4PJvSVeUg71-8EO0nvHVrYpKfPXoUFmhVYf2vGtaJ64w7rg6wL69j8pgPW33DrIygotCuOM62QAiNrrA0F8iunfW37R7hpAEPgUs3tXHGHqxblk3rmbd9Grm2qDiWa-VDKubnafa-9LfwA2dBhrvqevn_68FreTfDgAA',
   },
   {
     'name': 'Valentina 4/4',
     'desc': '4 giorni · split completa',
-    'icon': '🚀',
     'payload':
         'GYM1:H4sIAApl5WkC_82Y0U7bMBSGX8XKzW6SDWiZgDsosE2CrYJuu5gQOnFOU6uOndkO0CHeZ--xF9txUlhpSmGlrSJFVZs48Xdi-_9_9zbgUqBynyHDYC_4BpJ-CAVBGBhd0Dc6--M2SGA0bvFdmyFdYJvv2tQm1smoC8ZZanURBllhucRPGaS-aV5I-TZXKbXDGzRcWLTl01T1qBNw7BT4wHcSBg5Miu4c_bNa1Dvm9kRYRzdsboQ74fsLf47rKzSjnvD3726EgVAOzdH44V0oLJ3f3KILSjvs9qiToPreKavE6oQtcjQW3QcqMQ_2qHkq-seCSq_AJLjIwyf6WgV34QPwGWbgtEHGtWIHQoLiAk3D4GMwMUoZxXRL5HuMjL6erKJLleGIHYC1ulnoFsFhEnGIJU5TP3r3p6CK2IgV4p9TR2_-_GaFBSaBXRVyiGqRmpIii8vxmKqnZwQXuXCCgWAduBLNGgqjc6Q1YAfTa-AL9T5ASJgvAHN2dONQWaFVs_j1GPPSlZiX-IA5UcuxQcUHrGvQ2in8rRr-gvBLmDl2SCs24oZGA80kf8cUxD__xW-H5VGjb72IvsVuWAY3i-DzCu7uwgPX_WPref_4WUByv0rm-cg5NXTzNbldn41rljbPODl2J5jOnHhTpFshwb5i-i1kf5hGeYk2xdvQte55Z67vjyJn-3FScDKOZiEPRH4J92QTxPv9vlbJs15QHmvEfZAiWShampMSBLLPzqBcknMn8k6pQzuzpGh13JzoIuPpHkWJwloBivWuPdtC6rm7avU0FWPkSsanRLT1khBuB_PEs4t8yA7po2mKmRPTZeLBHjme5mtITF996qMESJ2kcmwn_y9LI6HScZjty9GjCE4uBaxLAwwNLyL2CanuBvvyF0V1dmy0ciBXqldLCFB9j1nXgXERtA1FUy9i-wkjXqsV_xPeCrJexMwMWNfe8bEgentVKbD9vIClsnA4N_95m-8NSDFd80zeVVyT7qMzUN5-Dml7IkXfNW3jV-FFyT3eVAjsFEY2L_9xT7Vg9Ft3mnoq_Pk3y0B6b9Mz_55ZqicvxR4qd5t--WUhp7SgSbl003LFALIMTZ35BXvp14noUvbSF3d_AeQpIbSyFQAA',
   },
   {
     'name': 'Andrea 4/4',
     'desc': '4 giorni · split completa',
-    'icon': '👊',
     'payload':
         'GYM1:H4sIAApl5WkC_9WXX0_bMBDAv4qV50RraZEYb6WDDQmmCvo2VdPFuTbWHDuzHWiH-O47JwGytupQ2cBIfajs2P7d_7u7iEuByn2FAqPjaKQygxDFkdGVE4qWvt1FGaza7f6HIe2lOltNwDhLu7M4KirLJZ4XsKBPVCVlHOESDRcWbX1eNYcvged0JbvSt3SJA7NAd43-lgG9h6W9ENbRgf5B3O_FRzO_yPUNmtVU-As-9uJIKIfmtL19ApWl9f4BbSjtcDKlV6Lm_7iWCpsFW5VoLLrPJFUZHdPnCzE_ExJbMovgMEuMvk2KBjK6jx-5L8Cxlj0wbgkuKUnhmb5VXeIrLMBpg4xrxU6EBMUFmtDoUzApSpmkdCTxL3oDvG_FT43gohROMBBsDDciMG6jSyRwm6-DnxlUPGcTg9YGxpxVRVr7if1BGk-4IXw0XfhxZeRuVz_YlOENHJ0TZ3Q_8-RPKfXgJSn1-mdFMbJT9OGG6LUFX1UB1mN2LfZFlGyakyXdX2l7r-1vuSi_u4atm1J1AUqAYp8QMinmAYKbFjHJHhDXND5Ks4pTXQgswL3C4QGtG9Yg5-wKap_fqeyj2P8OybNfkZoTXWI83R_MpqI8ulvBhzXr4Z6sA7ZkBSz3Qm7g1jPQ4CUZaGw0F3UGugRVpUY8Iy6O3qZ-zOWqa6oJ5UtgEwoYCK0x8rU4Keta3PWtHK1rSrRvi3xfFBo594gN-bZO-jrXlczQhC2ELYTLH_AT2zJv2mMkf9HYwKhLRQNShFcQHj1fNoib6aqJgXNFM6ACB7tFaPPW_qlruH_qEjUiJp2Z4SlE1vLZ8D93VIOtln3rduqdFfcLXLDTpUNlhVahTXe4SPCRbQ3aDxsB8jazxZaZqC3LbCTpaQpyEep4t1UCkH6M1uwErNWhFTtIJW7HvqTEQzLpoMbQHIqC6tgG8DNa1t6Lctw_aVln978BapFsfKsUAAA',
   },
@@ -2545,7 +721,7 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("✅ Progressi di ${atleta.name} aggiornati!"),
+              content: Text("Progressi di ${atleta.name} aggiornati!"),
               backgroundColor: Colors.green,
             ),
           );
@@ -3005,7 +1181,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
         final nome = clientName != null ? " di $clientName" : "";
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("✅ ${logs.length} sessioni$nome sincronizzate!"),
+            content: Text("${logs.length} sessioni$nome sincronizzate!"),
             backgroundColor: Colors.green,
           ),
         );
@@ -3198,20 +1374,11 @@ class _ClientDetailViewState extends State<ClientDetailView>
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: Colors.white10),
                       ),
-                      child: Text(
-                        day.bodyParts
-                                .map((k) => kBodyPartIcons[k] ?? '')
-                                .where((e) => e.isNotEmpty)
-                                .take(2)
-                                .join(' ')
-                                .isNotEmpty
-                            ? day.bodyParts
-                                  .map((k) => kBodyPartIcons[k] ?? '')
-                                  .where((e) => e.isNotEmpty)
-                                  .take(2)
-                                  .join(' ')
-                            : '—',
-                        style: const TextStyle(fontSize: 20),
+                      child: Icon(
+                        kBodyPartIcons[day.bodyParts.firstOrNull] ??
+                            Icons.fitness_center_rounded,
+                        size: 22,
+                        color: Colors.amber,
                       ),
                     ),
                   ),
@@ -3358,7 +1525,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                                   if (ex.notePT.isNotEmpty) ...[
                                     const SizedBox(height: 2),
                                     Text(
-                                      '📝 ${ex.notePT}',
+                                      '${ex.notePT}',
                                       style: const TextStyle(color: Colors.amber, fontSize: 10),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
@@ -4024,6 +2191,11 @@ class _ClientDetailViewState extends State<ClientDetailView>
                   ),
                   // Bottone sfoglia archivio per gruppo muscolare
                   const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 6,
+                    alignment: WrapAlignment.center,
+                    children: [
                   OutlinedButton.icon(
                     onPressed: () =>
                         _apriArchivioEserciziPT(context, setS, (ex) {
@@ -4050,6 +2222,49 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       ),
                     ),
                   ),
+                  // Selezione multipla: aggiunge tutti con set/reps/recupero del modulo
+                  if (editIndex == null)
+                    OutlinedButton.icon(
+                      onPressed: () => _apriArchivioEserciziPT(
+                        context,
+                        setS,
+                        (_) {},
+                        onSelectMany: (list) {
+                          final n = sets.clamp(1, 10);
+                          setState(() => widget.client.routine[dayIdx].exercises.addAll([
+                            for (final e in list)
+                              ExerciseConfig(
+                                name: e.name,
+                                targetSets: n,
+                                recoveryTime: rec,
+                                interExercisePause: pause,
+                                notePT: notePT,
+                                noteCliente: '',
+                                supersetGroup: supersetGroup,
+                                repsList: ctrls.take(n).map((c) => int.tryParse(c.text) ?? 10).toList(),
+                                gifFilename: e.gifFilename,
+                              ),
+                          ]));
+                          widget.onUpdate();
+                          Navigator.pop(c);
+                        },
+                      ),
+                      icon: const Icon(Icons.playlist_add_rounded, size: 16),
+                      label: const Text('Più esercizi', style: TextStyle(fontSize: 13)),
+                    style: OutlinedButton.styleFrom(
+                        foregroundColor: Colors.amber,
+                        side: const BorderSide(color: Color(0x42FFC107)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                      ),
+                    ),
+                    ],
+                  ),
                   Row(
                     children: [
                       Expanded(
@@ -4073,6 +2288,25 @@ class _ClientDetailViewState extends State<ClientDetailView>
                               setS(() => rec = int.tryParse(v) ?? 90),
                         ),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Wrap(
+                    spacing: 5,
+                    alignment: WrapAlignment.center,
+                    children: [
+                      for (final v in const [60, 90, 120, 180])
+                        ActionChip(
+                          backgroundColor: rec == v ? Colors.amber.withAlpha(60) : Colors.blueGrey.shade900,
+                          label: Text(
+                            '$v s',
+                            style: const TextStyle(fontSize: 10, color: Colors.amber),
+                          ),
+                          onPressed: () => setS(() {
+                            rec = v;
+                            recCtrl.text = '$v';
+                          }),
+                        ),
                     ],
                   ),
                   TextField(
@@ -4110,7 +2344,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       children: [
                         Center(
                           child: const Text(
-                            "🔗 Superserie / Circuito",
+                            "Superserie / Circuito",
                             style: TextStyle(
                               color: Colors.purpleAccent,
                               fontWeight: FontWeight.bold,
@@ -4155,7 +2389,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
-                                  i == 0 ? '✗' : '$i',
+                                  '$i',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16,
@@ -4172,11 +2406,35 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Center(
-                    child: Text(
-                      "Target Reps:",
-                      style: TextStyle(fontWeight: FontWeight.w500),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Target Reps:",
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(width: 10),
+                      // imposta tutte le serie insieme
+                      SizedBox(
+                        width: 70,
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            hintText: 'tutte',
+                            isDense: true,
+                          ),
+                          onChanged: (v) {
+                            if (int.tryParse(v) == null) return;
+                            setS(() {
+                              for (final ct in ctrls) {
+                                ct.text = v;
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   Center(
                     child: Wrap(
@@ -4269,6 +2527,8 @@ class _ClientDetailViewState extends State<ClientDetailView>
   }
 
   void _mostraTemplateDialog() {
+    int? fLv, fDays;
+    bool? fSplit, fMono;
     showModalBottomSheet(
       context: context,
       backgroundColor: const Color(0xFF1C1C1E),
@@ -4276,95 +2536,131 @@ class _ClientDetailViewState extends State<ClientDetailView>
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      builder: (c) => SizedBox(
-        height: MediaQuery.of(c).size.height * 0.75,
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Text(
-                    'Scegli un template',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.amber,
+      builder: (c) => StatefulBuilder(builder: (c, setS) {
+        final list = kAllWorkoutTemplates.where((t) =>
+            (fLv == null || t['level'] == fLv) &&
+            (fDays == null || _templateDays(t).length == fDays) &&
+            (fSplit == null || t['split'] == fSplit) &&
+            (fMono == null || t['mono'] == fMono)).toList();
+        // ripremere il chip scelto toglie il filtro
+        Widget chips<T>(List<(T, String)> opts, T? sel, void Function(T?) set) => SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(children: [
+                for (final o in opts)
+                  Padding(
+                    padding: const EdgeInsets.only(right: 6, bottom: 6),
+                    child: ChoiceChip(
+                      label: Text(o.$2),
+                      selected: sel == o.$1,
+                      showCheckmark: false,
+                      visualDensity: VisualDensity.compact,
+                      selectedColor: Colors.amber.withAlpha(50),
+                      onSelected: (_) => setS(() => set(sel == o.$1 ? null : o.$1)),
                     ),
                   ),
-                  const Spacer(),
-                  IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white38),
-                    onPressed: () => Navigator.pop(c),
-                  ),
-                ],
-              ),
-              const Text(
-                'Carica una scheda pre-impostata come punto di partenza. '
-                'Puoi modificarla dopo il caricamento.',
-                style: TextStyle(color: Colors.white38, fontSize: 12),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: ListView(
+              ]),
+            );
+        return SizedBox(
+          height: MediaQuery.of(c).size.height * 0.85,
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   children: [
-                    ...kAllWorkoutTemplates.map(
-                      (t) => ListTile(
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        leading: Container(
-                          width: 44,
-                          height: 44,
-                          decoration: BoxDecoration(
-                            color: Colors.amber.withAlpha(20),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: Colors.amber.withAlpha(60)),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            t['icon'] as String,
-                            style: const TextStyle(fontSize: 20),
-                          ),
-                        ),
-                        title: Text(
-                          t['name'] as String,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        subtitle: Text(
-                          t['desc'] as String,
-                          style: const TextStyle(color: Colors.white38, fontSize: 12),
-                        ),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 14,
-                          color: Colors.white24,
-                        ),
-                        onTap: () {
-                          Navigator.pop(c);
-                          _confermaCaricaTemplate(t);
-                        },
+                    const Text(
+                      'Scegli un template',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.amber,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(Icons.close, color: Colors.white38),
+                      onPressed: () => Navigator.pop(c),
+                    ),
                   ],
                 ),
-              ),
-            ],
+                const Text(
+                  'Carica una scheda pre-impostata come punto di partenza. '
+                  'Puoi modificarla dopo il caricamento.',
+                  style: TextStyle(color: Colors.white38, fontSize: 12),
+                ),
+                const SizedBox(height: 16),
+                chips([(0, 'Principiante'), (1, 'Intermedio'), (2, 'Avanzato')], fLv, (v) => fLv = v),
+                chips([for (final d in [2, 3, 4, 5]) (d, '$d giorni')], fDays, (v) => fDays = v),
+                chips([(false, 'Full body'), (true, 'Split')], fSplit, (v) => fSplit = v),
+                chips([(false, 'Multifrequenza'), (true, 'Monofrequenza')], fMono, (v) => fMono = v),
+                Expanded(
+                  child: list.isEmpty
+                      ? const Center(
+                          child: Text(
+                            'Nessuna scheda con questi filtri',
+                            style: TextStyle(color: Colors.white38),
+                          ),
+                        )
+                      : ListView(
+                          children: [
+                            for (final t in list)
+                              ListTile(
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                leading: Container(
+                                  width: 44,
+                                  height: 44,
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber.withAlpha(20),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.amber.withAlpha(60)),
+                                  ),
+                                  alignment: Alignment.center,
+                                  child: Icon(
+                                    switch (t['level']) {
+                                      0 => Icons.signal_cellular_alt_1_bar_rounded,
+                                      1 => Icons.signal_cellular_alt_2_bar_rounded,
+                                      2 => Icons.signal_cellular_alt_rounded,
+                                      _ => Icons.fitness_center_rounded,
+                                    },
+                                    color: Colors.amber,
+                                  ),
+                                ),
+                                title: Text(
+                                  t['name'] as String,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                                ),
+                                subtitle: Text(
+                                  [
+                                    if ((t['levelName'] as String?)?.isNotEmpty ?? false)
+                                      '${t['levelName']} · ${t['mono'] == true ? 'monofrequenza' : 'multifrequenza'}',
+                                    t['desc'] as String,
+                                  ].join('\n'),
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(color: Colors.white38, fontSize: 12),
+                                ),
+                                trailing: const Icon(Icons.arrow_forward_ios, size: 14, color: Colors.white24),
+                                onTap: () {
+                                  Navigator.pop(c);
+                                  _confermaCaricaTemplate(t);
+                                },
+                              ),
+                          ],
+                        ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
   void _confermaCaricaTemplate(Map<String, dynamic> template) {
+    final days = _templateDays(template).cast<Map>();
     showDialog(
       context: context,
       builder: (c) => AlertDialog(
@@ -4374,10 +2670,42 @@ class _ClientDetailViewState extends State<ClientDetailView>
           'Carica "${template['name']}"?',
           style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
-        content: Text(
-          'Verranno aggiunte ${_templateDays(template).length} sessioni alla scheda. '
-          'Le sessioni esistenti verranno mantenute.',
-          style: const TextStyle(color: Colors.white54, fontSize: 14),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final k in ['desc', 'info'])
+                if ((template[k] as String?)?.isNotEmpty ?? false)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      template[k] as String,
+                      style: const TextStyle(color: Colors.white70, fontSize: 13, height: 1.35),
+                    ),
+                  ),
+              for (final d in days) ...[
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, bottom: 2),
+                  child: Text(
+                    '${d['dayName'] ?? ''}',
+                    style: const TextStyle(color: Colors.amber, fontWeight: FontWeight.w700, fontSize: 13),
+                  ),
+                ),
+                for (final e in ((d['exercises'] as List?) ?? const []).cast<Map>())
+                  Text(
+                    '${e['targetSets']}×${{...(e['repsList'] as List? ?? const [])}.join('/')}  ${e['name']}',
+                    style: const TextStyle(color: Colors.white54, fontSize: 12),
+                  ),
+              ],
+              const SizedBox(height: 12),
+              Text(
+                'Verranno aggiunte ${days.length} sessioni alla scheda. '
+                'Le sessioni esistenti verranno mantenute.',
+                style: const TextStyle(color: Colors.white38, fontSize: 12),
+              ),
+            ],
+          ),
         ),
         actions: [
           TextButton(
@@ -4391,19 +2719,25 @@ class _ClientDetailViewState extends State<ClientDetailView>
             onPressed: () {
               Navigator.pop(c);
               setState(() {
-                for (final dayData in _templateDays(template)) {
-                  final rawDay = Map<String, dynamic>.from(dayData as Map);
+                for (final dayData in days) {
+                  final rawDay = Map<String, dynamic>.from(dayData);
+                  // i template di gym_app chiamano 'dorso' quello che il coach chiama 'schiena'
+                  rawDay['bodyParts'] = [
+                    for (final p in (rawDay['bodyParts'] as List? ?? const []))
+                      p == 'dorso' ? 'schiena' : p,
+                  ];
                   rawDay['exercises'] =
                       (rawDay['exercises'] as List? ?? const []).map((e) {
                         final rawEx = Map<String, dynamic>.from(e as Map);
+                        // i template di gym_app hanno già nome e gif giusti
+                        if (rawEx['gifFilename'] != null) return rawEx;
                         final rawName = rawEx['name'] as String? ?? 'Esercizio';
                         final resolved = resolveTemplateExerciseInfo(rawName);
                         rawEx['name'] = resolved?.name ?? rawName.trim();
                         rawEx['gifFilename'] ??= resolved?.gifSlug;
                         return rawEx;
                       }).toList();
-                  final day = WorkoutDay.fromJson(rawDay);
-                  widget.client.routine.add(day);
+                  widget.client.routine.add(WorkoutDay.fromJson(rawDay));
                 }
               });
               widget.onUpdate();
@@ -4449,7 +2783,6 @@ class _ClientDetailViewState extends State<ClientDetailView>
                 spacing: 8,
                 runSpacing: 8,
                 children: kBodyPartIcons.entries
-                    .where((e) => e.key != 'nessuno')
                     .map((entry) {
                       final bool sel = selectedParts.contains(entry.key);
                       return GestureDetector(
@@ -4476,7 +2809,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                             ),
                           ),
                           child: Text(
-                            '${entry.value} ${kBodyPartNames[entry.key]}',
+                            kBodyPartNames[entry.key]!,
                             style: TextStyle(
                               color: sel
                                   ? const Color(0xFF00F2FF)
@@ -4536,7 +2869,6 @@ class _ClientDetailViewState extends State<ClientDetailView>
             spacing: 8,
             runSpacing: 8,
             children: kBodyPartIcons.entries
-                .where((e) => e.key != 'nessuno')
                 .map((entry) {
                   final bool sel = selected.contains(entry.key);
                   return GestureDetector(
@@ -4563,7 +2895,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                         ),
                       ),
                       child: Text(
-                        '${entry.value} ${kBodyPartNames[entry.key]}',
+                        kBodyPartNames[entry.key]!,
                         style: TextStyle(
                           color: sel ? const Color(0xFF00F2FF) : Colors.white54,
                           fontSize: 13,
@@ -4849,7 +3181,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
         final nome = clientName != null ? " di $clientName" : "";
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("✅ ${newLogs.length} sessioni$nome importate!"),
+            content: Text("${newLogs.length} sessioni$nome importate!"),
             backgroundColor: Colors.green,
           ),
         );
@@ -4890,7 +3222,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                   const Padding(
                     padding: EdgeInsets.only(bottom: 8),
                     child: Text(
-                      "⚠️ Il testo negli appunti non sembra un log valido.",
+                      "Il testo negli appunti non sembra un log valido.",
                       style: TextStyle(color: Colors.orange, fontSize: 12),
                     ),
                   ),
@@ -4937,7 +3269,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                 final nome = clientName != null ? " di $clientName" : "";
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text("✅ ${logs.length} sessioni$nome importate!"),
+                    content: Text("${logs.length} sessioni$nome importate!"),
                     backgroundColor: Colors.green,
                   ),
                 );
@@ -4998,23 +3330,13 @@ class _ClientDetailViewState extends State<ClientDetailView>
   void _apriArchivioEserciziPT(
     BuildContext context,
     StateSetter setS,
-    Function(ExerciseInfo) onSelect,
-  ) {
+    Function(ExerciseInfo) onSelect, {
+    void Function(List<ExerciseInfo>)? onSelectMany,
+  }) {
+    final picked = <ExerciseInfo>[];
     String? selectedCategory;
     String? selectedEquipment;
     String searchQuery = '';
-
-    const Map<String, String> muscleIcons = {
-      'petto': '🦍',
-      'dorso': '🔙',
-      'gambe': '🦵',
-      'spalle': '🏋️',
-      'braccia': '💪',
-      'core': '🔥',
-      'glutei': '🍑',
-      'cardio': '❤️',
-      'altro': '⚡',
-    };
 
     final Map<String, ExerciseInfo> archiveByName = {};
     for (final e in [...kExerciseCatalog, ...kGifCatalog]) {
@@ -5114,7 +3436,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       ),
                       ...cats.map(
                         (cat) => _ptArchiveChip(
-                          label: '${muscleIcons[cat] ?? '⚡'} $cat',
+                          label: cat,
                           selected: selectedCategory == cat,
                           onTap: () => setA(() => selectedCategory = cat),
                         ),
@@ -5138,7 +3460,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                   child: Row(
                     children: [
                       _ptArchiveChip(
-                        label: '🤸 Corpo libero',
+                        label: 'Corpo libero',
                         selected: selectedEquipment == 'corpo_libero',
                         onTap: () => setA(
                           () => selectedEquipment =
@@ -5146,7 +3468,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                         ),
                       ),
                       _ptArchiveChip(
-                        label: '🏋️ Manubri',
+                        label: 'Manubri',
                         selected: selectedEquipment == 'manubri',
                         onTap: () => setA(
                           () => selectedEquipment =
@@ -5154,7 +3476,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                         ),
                       ),
                       _ptArchiveChip(
-                        label: '🏋️‍♂️ Bilanciere',
+                        label: 'Bilanciere',
                         selected: selectedEquipment == 'bilanciere',
                         onTap: () => setA(
                           () => selectedEquipment =
@@ -5177,8 +3499,13 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     itemCount: filtered.length,
                     itemBuilder: (_, i) {
                       final ex = filtered[i];
+                      final isPicked = picked.contains(ex);
                       return GestureDetector(
                         onTap: () {
+                          if (onSelectMany != null) {
+                            setA(() => isPicked ? picked.remove(ex) : picked.add(ex));
+                            return;
+                          }
                           Navigator.pop(c);
                           setS(() => onSelect(ex));
                         },
@@ -5186,6 +3513,9 @@ class _ClientDetailViewState extends State<ClientDetailView>
                           decoration: BoxDecoration(
                             color: Colors.white.withAlpha(20),
                             borderRadius: BorderRadius.circular(12),
+                            border: isPicked
+                                ? Border.all(color: Colors.amber, width: 2.5)
+                                : null,
                           ),
                           child: Column(
                             children: [
@@ -5240,6 +3570,30 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     },
                   ),
                 ),
+                if (onSelectMany != null && picked.isNotEmpty)
+                  SafeArea(
+                    top: false,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.amber,
+                            foregroundColor: Colors.black,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(c);
+                            onSelectMany(List.of(picked));
+                          },
+                          child: Text(
+                            'Aggiungi ${picked.length}',
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           );
