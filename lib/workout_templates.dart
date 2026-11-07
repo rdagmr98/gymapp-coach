@@ -323,6 +323,17 @@ const _days = <String, (String, List<String>, List<_Slot>)>{
   ]),
 };
 
+// immagine muscoli di ogni giorno generato (assets/muscle). ponytail: per il full body non c'è
+// un'immagine intera, quindi A/B/C prendono spinta/tirata/gambe per distinguerli.
+const _dayImage = {
+  'fbA': 'push.png', 'fbB': 'pull.png', 'fbC': 'gambe.png',
+  'upA': 'push.png', 'upB': 'pull.png', 'loA': 'gambe.png', 'loB': 'gambe.png',
+  'push': 'push.png', 'pull': 'pull.png', 'legs': 'gambe.png',
+  'pettoTri': 'push.png', 'dorsoBi': 'pull.png', 'spalleCore': 'spalle.png',
+  'petto': 'petto.png', 'dorso': 'dorso.png', 'spalle': 'spalle.png', 'braccia': 'braccia.png',
+  'gluteiA': 'glutei.png', 'gluteiB': 'glutei.png',
+};
+
 Map<String, dynamic> _buildDay(String key, int lv) {
   final (name, parts, slots) = _days[key]!;
   final exercises = <Map<String, dynamic>>[];
@@ -335,7 +346,7 @@ Map<String, dynamic> _buildDay(String key, int lv) {
     final note = [_l(cueIt, cueEn), _l(noteIt, noteEn)].where((s) => s.isNotEmpty).join('. ');
     exercises.add(_ex(exName, gif, sets, reps, rest: rest, note: '$note.'));
   }
-  return _day(name, parts, null, exercises);
+  return _day(name, parts, _dayImage[key], exercises);
 }
 
 const _levelNames = [('Principiante', 'Beginner'), ('Intermedio', 'Intermediate'), ('Avanzato', 'Advanced')];
