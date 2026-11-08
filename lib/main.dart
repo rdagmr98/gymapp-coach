@@ -1193,8 +1193,6 @@ class _ClientDetailViewState extends State<ClientDetailView>
     },
   ];
 
-  final _appLinks = AppLinks();
-  StreamSubscription<Uri>? _linkSubscription;
   late final AnimationController _wiggleCtrl;
   late final TabController _tabController;
   bool _isReordering = false;
@@ -1207,18 +1205,12 @@ class _ClientDetailViewState extends State<ClientDetailView>
       duration: const Duration(milliseconds: 180),
     );
     _tabController = TabController(length: 2, vsync: this);
-    _initDeepLinks(); // <--- Fondamentale per ricevere i progressi!
-  }
-
-  void _initDeepLinks() async {
-    _linkSubscription = _appLinks.uriLinkStream.listen((uri) {
-      _handleIncomingProgressFile(uri);
-    });
+    // ponytail: i file in arrivo (.gymlog e .workout) li gestisce solo la dashboard;
+    // un secondo listener qui leggeva i content:// con File.fromUri e mostrava un errore.
   }
 
   @override
   void dispose() {
-    _linkSubscription?.cancel();
     _wiggleCtrl.dispose();
     _tabController.dispose();
     super.dispose();
@@ -1247,38 +1239,6 @@ class _ClientDetailViewState extends State<ClientDetailView>
         return Transform.rotate(angle: angle, child: wiggleChild);
       },
     );
-  }
-
-  void _handleIncomingProgressFile(Uri uri) async {
-    try {
-      String content;
-      if (uri.scheme == 'content') {
-        final fileData = File.fromUri(uri);
-        content = utf8.decode(await fileData.readAsBytes());
-      } else {
-        content = await File(uri.toFilePath()).readAsString();
-      }
-
-      final (logs, clientName) = _validaEParseLogs(content);
-      setState(() {
-        widget.client.performanceLogs = logs;
-      });
-      widget.onUpdate();
-      HapticFeedback.mediumImpact();
-      if (mounted) {
-        final nome = clientName != null ? " di $clientName" : "";
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("${logs.length} sessioni$nome sincronizzate!"),
-            backgroundColor: Colors.green,
-          ),
-        );
-        _tabController.animateTo(1);
-      }
-    } catch (e) {
-      debugPrint("Errore ricezione progressi: $e");
-      if (mounted) _mostraErroreImportazione(e.toString());
-    }
   }
 
   // ─── VALIDAZIONE JSON LOG (duplicato in questa view) ────────────────────
