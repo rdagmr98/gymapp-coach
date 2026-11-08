@@ -63,6 +63,24 @@
                 <data android:scheme="content" android:mimeType="application/octet-stream" android:pathPattern=".*\\.gymlog" />
             </intent-filter>
 
+            <!-- Schede .workout: importa/crea l'atleta (stessi filtri di gym_app) -->
+            <intent-filter android:label="Gym Coach Pro">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-workout" />
+            </intent-filter>
+            <intent-filter android:label="Gym Coach Pro">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="file" android:mimeType="*/*" android:pathSuffix=".workout" />
+            </intent-filter>
+            <intent-filter android:label="Gym Coach Pro">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" android:mimeType="application/octet-stream" android:pathPattern=".*\\.workout" />
+            </intent-filter>
+
 
 
         </activity>

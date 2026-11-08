@@ -205,6 +205,10 @@ class ExerciseConfig {
   String? gifFilename;
   bool useQuarterStep;
 
+  /// Esercizio a tempo (cardio): durata in secondi, 0 = serie x reps.
+  int cardioSeconds;
+  bool get isCardio => cardioSeconds > 0;
+
   ExerciseConfig({
     required this.name,
     required this.targetSets,
@@ -216,6 +220,7 @@ class ExerciseConfig {
     this.supersetGroup = 0,
     this.gifFilename,
     this.useQuarterStep = false,
+    this.cardioSeconds = 0,
   });
 
   Map<String, dynamic> toJson() => {
@@ -229,6 +234,7 @@ class ExerciseConfig {
     'supersetGroup': supersetGroup,
     if (gifFilename != null) 'gifFilename': gifFilename,
     if (useQuarterStep) 'useQuarterStep': useQuarterStep,
+    if (cardioSeconds > 0) 'cardioSeconds': cardioSeconds,
   };
 
   factory ExerciseConfig.fromJson(Map<String, dynamic> json) => ExerciseConfig(
@@ -242,6 +248,7 @@ class ExerciseConfig {
     supersetGroup: (json['supersetGroup'] as num?)?.toInt() ?? 0,
     gifFilename: json['gifFilename'] as String?,
     useQuarterStep: json['useQuarterStep'] == true,
+    cardioSeconds: (json['cardioSeconds'] as num?)?.toInt() ?? 0,
   );
 }
 
@@ -319,11 +326,8 @@ const List<Map<String, String>> kMuscleImages = [
   {'file': 'pull.png', 'label': 'Pull'},
 ];
 
-List<dynamic> _templateDays(Map<String, dynamic> template) {
-  final directDays = template['days'];
-  if (directDays is List) return directDays;
-  final payload = template['payload'] as String?;
-  if (payload == null || payload.isEmpty) return const [];
+/// JSON di una scheda, in chiaro o come codice `GYM1:` (gzip + base64url).
+dynamic _decodePayload(String payload) {
   var raw = payload.trim();
   if (raw.startsWith('GYM1:')) {
     final b64 = raw.substring(5).replaceAll(RegExp(r'\s'), '');
@@ -331,12 +335,58 @@ List<dynamic> _templateDays(Map<String, dynamic> template) {
     final bytes = base64Url.decode(padded);
     raw = utf8.decode(arc.GZipDecoder().decodeBytes(bytes));
   }
-  final decoded = jsonDecode(raw);
+  return jsonDecode(raw);
+}
+
+List<dynamic> _templateDays(Map<String, dynamic> template) {
+  final directDays = template['days'];
+  if (directDays is List) return directDays;
+  final payload = template['payload'] as String?;
+  if (payload == null || payload.isEmpty) return const [];
+  final decoded = _decodePayload(payload);
   if (decoded is Map<String, dynamic>) {
     final routine = decoded['routine'];
     if (routine is List) return routine;
   }
   return decoded is List ? decoded : const [];
+}
+
+/// File `.workout` (o codice copiato) → (giorni, nome atleta se il file lo contiene).
+/// Lancia FormatException se non è una scheda.
+(List<dynamic>, String?) parseSchedaFile(String text) {
+  var t = text.replaceFirst('\uFEFF', '').trim();
+  if (t.startsWith('TIPO:SCHEDA_GYM')) t = t.substring(15).trim();
+  if (t.startsWith('TIPO:')) throw const FormatException('non è una scheda');
+  final decoded = _decodePayload(t);
+  final days = decoded is Map ? decoded['routine'] : decoded;
+  if (days is! List ||
+      days.isEmpty ||
+      days.any((d) => d is! Map || d['exercises'] is! List)) {
+    throw const FormatException('non è una scheda');
+  }
+  final name = decoded is Map ? '${decoded['clientName'] ?? ''}'.trim() : '';
+  return (days, name.isEmpty ? null : name);
+}
+
+/// Giorno di un template o di un file importato → WorkoutDay del coach.
+WorkoutDay workoutDayFromTemplate(Map dayData) {
+  final rawDay = Map<String, dynamic>.from(dayData);
+  // i template di gym_app chiamano 'dorso' quello che il coach chiama 'schiena'
+  rawDay['bodyParts'] = [
+    for (final p in (rawDay['bodyParts'] as List? ?? const []))
+      p == 'dorso' ? 'schiena' : p,
+  ];
+  rawDay['exercises'] = (rawDay['exercises'] as List? ?? const []).map((e) {
+    final rawEx = Map<String, dynamic>.from(e as Map);
+    // i template di gym_app hanno già nome e gif giusti
+    if (rawEx['gifFilename'] != null) return rawEx;
+    final rawName = rawEx['name'] as String? ?? 'Esercizio';
+    final resolved = resolveTemplateExerciseInfo(rawName);
+    rawEx['name'] = resolved?.name ?? rawName.trim();
+    rawEx['gifFilename'] ??= resolved?.gifSlug;
+    return rawEx;
+  }).toList();
+  return WorkoutDay.fromJson(rawDay);
 }
 
 final List<Map<String, dynamic>> kCuratedWorkoutTemplates = [
@@ -612,6 +662,10 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
         content = await File(uri.toFilePath()).readAsString();
       }
 
+      if (content.replaceFirst('﻿', '').trimLeft().startsWith('TIPO:SCHEDA_GYM')) {
+        _importaSchedaDaTesto(content);
+        return;
+      }
       final (logs, clientName) = _validaEParseLogs(content);
       _autoAssegnaOChiedi(logs, clientName);
     } catch (e) {
@@ -703,6 +757,114 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
     );
   }
 
+  // ─── IMPORT SCHEDA (.workout) ────────────────────────────────────────────
+
+  static String _normName(String s) =>
+      s.trim().toLowerCase().replaceAll(RegExp(r'\s+'), ' ');
+
+  /// Carica un file .workout: crea l'atleta se non esiste, altrimenti chiede
+  /// se sostituirgli la scheda (gli altri dati dell'atleta restano).
+  Future<void> _importaSchedaWorkout() async {
+    final res = await FilePicker.platform.pickFiles(withData: true);
+    if (res == null || res.files.isEmpty) return;
+    final f = res.files.single;
+    final text = f.bytes != null
+        ? utf8.decode(f.bytes!, allowMalformed: true)
+        : (!kIsWeb && f.path != null ? await File(f.path!).readAsString() : '');
+    await _importaSchedaDaTesto(text);
+  }
+
+  /// Usato anche da "Apri con" (file .workout in entrata).
+  Future<void> _importaSchedaDaTesto(String text) async {
+    final List<WorkoutDay> routine;
+    String? nome;
+    try {
+      final (days, fileName) = parseSchedaFile(text);
+      routine = [for (final d in days) workoutDayFromTemplate(d as Map)];
+      nome = fileName;
+    } catch (e) {
+      debugPrint('Import scheda: $e');
+      _mostraErroreImportazione(
+        "Il file selezionato non è una scheda valida.\n\n"
+        "Seleziona un file .workout (creato con GymCoach).",
+      );
+      return;
+    }
+    if (!mounted) return;
+    nome ??= await _chiediNomeAtleta();
+    if (nome == null || nome.trim().isEmpty || !mounted) return;
+    final key = _normName(nome);
+    final esistente = clients.where((c) => _normName(c.name) == key).firstOrNull;
+
+    void fatto(String msg) {
+      _saveData();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(msg), backgroundColor: Colors.green),
+      );
+    }
+
+    if (esistente == null) {
+      final n = nome.trim();
+      setState(
+        () => clients.add(
+          Client(id: DateTime.now().toString(), name: n, routine: routine),
+        ),
+      );
+      fatto("Atleta $n creato con ${routine.length} sessioni");
+      return;
+    }
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: Text("${esistente.name} esiste già"),
+        content: Text(
+          "Sostituire la sua scheda con quella del file (${routine.length} sessioni)? "
+          "Progressi e nome restano invariati.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c, false),
+            child: const Text("ANNULLA"),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(c, true),
+            child: const Text("SOSTITUISCI"),
+          ),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    setState(() => esistente.routine = routine);
+    fatto("Scheda di ${esistente.name} sostituita");
+  }
+
+  Future<String?> _chiediNomeAtleta() {
+    final ctrl = TextEditingController();
+    return showDialog<String>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text("Nome atleta"),
+        content: TextField(
+          controller: ctrl,
+          autofocus: true,
+          decoration: const InputDecoration(
+            hintText: "Il file non contiene il nome",
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(c),
+            child: const Text("ANNULLA"),
+          ),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(c, ctrl.text.trim()),
+            child: const Text("IMPORTA"),
+          ),
+        ],
+      ),
+    );
+  }
+
   // --- MANTIENI I TUOI METODI DI CARICAMENTO SOTTO ---
   Future<void> _loadData() async {
     final prefs = await SharedPreferences.getInstance();
@@ -727,11 +889,20 @@ class _PTDashboardState extends State<PTDashboard> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("COACH DASHBOARD")),
+      appBar: AppBar(
+        title: const Text("COACH DASHBOARD"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.upload_file),
+            tooltip: "Importa scheda (.workout)",
+            onPressed: _importaSchedaWorkout,
+          ),
+        ],
+      ),
       body: clients.isEmpty
           ? const Center(
               child: Text(
-                "Nessun atleta.\nTocca + per aggiungerne uno.",
+                "Nessun atleta.\nTocca + per aggiungerne uno\no importa un file .workout dall'icona in alto.",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white38),
               ),
@@ -1436,7 +1607,9 @@ class _ClientDetailViewState extends State<ClientDetailView>
                                   ),
                                   const SizedBox(height: 4),
                                   Text(
-                                    '${ex.targetSets} serie · ${ex.repsList.join('-')} reps · ${ex.recoveryTime}s riposo',
+                                    ex.isCardio
+                                        ? '${(ex.cardioSeconds / 60).toStringAsFixed(ex.cardioSeconds % 60 == 0 ? 0 : 1)} min a tempo'
+                                        : '${ex.targetSets} serie · ${ex.repsList.join('-')} reps · ${ex.recoveryTime}s riposo',
                                     style: const TextStyle(color: Colors.white38, fontSize: 11),
                                   ),
                                   if (ex.notePT.isNotEmpty) ...[
@@ -1815,6 +1988,10 @@ class _ClientDetailViewState extends State<ClientDetailView>
     String notePT = ex?.notePT ?? "";
     int supersetGroup = ex?.supersetGroup ?? 0;
     String? gifFilename = ex?.gifFilename;
+    bool cardio = ex?.isCardio ?? false;
+    final cardioCtrl = TextEditingController(
+      text: '${(ex?.cardioSeconds ?? 0) > 0 ? ex!.cardioSeconds : 300}',
+    );
 
     final setsCtrl = TextEditingController(text: sets.toString());
     final recCtrl = TextEditingController(text: rec.toString());
@@ -2179,6 +2356,19 @@ class _ClientDetailViewState extends State<ClientDetailView>
                     ),
                     ],
                   ),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text("A tempo (cardio)"),
+                    value: cardio,
+                    onChanged: (v) => setS(() => cardio = v),
+                  ),
+                  if (cardio)
+                    TextField(
+                      controller: cardioCtrl,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(labelText: "Durata (s)"),
+                    ),
+                  if (!cardio) ...[
                   Row(
                     children: [
                       Expanded(
@@ -2223,6 +2413,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                         ),
                     ],
                   ),
+                  ],
                   TextField(
                     controller: pauseCtrl,
                     keyboardType: TextInputType.number,
@@ -2319,6 +2510,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       ],
                     ),
                   ),
+                  if (!cardio) ...[
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -2381,6 +2573,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                       ),
                     ),
                   ),
+                  ],
                 ],
               ),
             ),
@@ -2399,7 +2592,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
                   );
                   return;
                 }
-                if (sets < 1 || sets > 10) {
+                if (!cardio && (sets < 1 || sets > 10)) {
                   ScaffoldMessenger.of(ctx).showSnackBar(
                     const SnackBar(
                       content: Text("Le serie devono essere tra 1 e 10"),
@@ -2410,18 +2603,23 @@ class _ClientDetailViewState extends State<ClientDetailView>
                 }
                 var newEx = ExerciseConfig(
                   name: name.trim(),
-                  targetSets: sets,
+                  targetSets: cardio ? 1 : sets,
                   recoveryTime: rec,
                   interExercisePause: pause,
                   notePT: notePT,
                   noteCliente: ex?.noteCliente ?? "",
                   supersetGroup: supersetGroup,
-                  repsList: ctrls
-                      .take(sets)
-                      .map((e) => int.tryParse(e.text) ?? 10)
-                      .toList(),
+                  repsList: cardio
+                      ? [1]
+                      : ctrls
+                          .take(sets)
+                          .map((e) => int.tryParse(e.text) ?? 10)
+                          .toList(),
                   gifFilename: gifFilename,
                   useQuarterStep: ex?.useQuarterStep ?? false,
+                  cardioSeconds: cardio
+                      ? (int.tryParse(cardioCtrl.text) ?? 300).clamp(1, 86400)
+                      : 0,
                 );
                 setState(() {
                   if (editIndex == null)
@@ -2634,24 +2832,7 @@ class _ClientDetailViewState extends State<ClientDetailView>
               Navigator.pop(c);
               setState(() {
                 for (final dayData in days) {
-                  final rawDay = Map<String, dynamic>.from(dayData);
-                  // i template di gym_app chiamano 'dorso' quello che il coach chiama 'schiena'
-                  rawDay['bodyParts'] = [
-                    for (final p in (rawDay['bodyParts'] as List? ?? const []))
-                      p == 'dorso' ? 'schiena' : p,
-                  ];
-                  rawDay['exercises'] =
-                      (rawDay['exercises'] as List? ?? const []).map((e) {
-                        final rawEx = Map<String, dynamic>.from(e as Map);
-                        // i template di gym_app hanno già nome e gif giusti
-                        if (rawEx['gifFilename'] != null) return rawEx;
-                        final rawName = rawEx['name'] as String? ?? 'Esercizio';
-                        final resolved = resolveTemplateExerciseInfo(rawName);
-                        rawEx['name'] = resolved?.name ?? rawName.trim();
-                        rawEx['gifFilename'] ??= resolved?.gifSlug;
-                        return rawEx;
-                      }).toList();
-                  widget.client.routine.add(WorkoutDay.fromJson(rawDay));
+                  widget.client.routine.add(workoutDayFromTemplate(dayData));
                 }
               });
               widget.onUpdate();
